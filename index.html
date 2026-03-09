@@ -16,6 +16,46 @@ font-family:Arial;
 width:100%;
 height:100vh;
 }
+    #intro{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:#000;
+display:flex;
+align-items:center;
+justify-content:center;
+z-index:1000;
+}
+
+.intro-box{
+text-align:center;
+color:white;
+background:rgba(0,0,0,0.6);
+padding:40px;
+border-radius:12px;
+backdrop-filter:blur(8px);
+}
+
+.intro-box h1{
+margin-bottom:10px;
+}
+
+.intro-box button{
+margin-top:20px;
+padding:10px 20px;
+font-size:16px;
+border:none;
+border-radius:6px;
+background:#2196f3;
+color:white;
+cursor:pointer;
+}
+
+.intro-box button:hover{
+background:#1976d2;
+}
 
 /* MENU */
 
@@ -116,6 +156,16 @@ background:#2196f3;
 </head>
 
 <body>
+    <div id="intro">
+
+<div class="intro-box">
+<h1>360° College Tour</h1>
+<p>Explore the classroom and project lab in immersive view.</p>
+
+<button onclick="startTour()">Start Tour</button>
+</div>
+
+</div>
 
 <div class="menu-container">
 <div class="menu-icon">☰</div>
@@ -171,6 +221,17 @@ var viewer = pannellum.viewer('panorama',{
 
 /* TITLE ANIMATION */
 
+    
+let intro = document.getElementById("intro")
+
+intro.style.opacity = "0"
+
+setTimeout(function(){
+intro.style.display = "none"
+},500)
+
+}
+    
 viewer.on('scenechange', function(scene){
 
 let title = document.getElementById("sceneTitle")
@@ -200,4 +261,5 @@ title.classList.add("title-in")
 </script>
 
 </body>
+
 </html>
