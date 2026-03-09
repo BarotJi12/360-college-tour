@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,42 +24,73 @@ top:0;
 left:0;
 width:100%;
 height:100%;
-background:url("classroom.jpeg") center/cover no-repeat;
+background:url("upl.jpg") center/cover no-repeat;
 display:flex;
 align-items:center;
 justify-content:center;
 z-index:1000;
-animation:bgZoom 12s ease-in-out infinite alternate;
 transition:opacity 0.7s ease;
 }
 
-/* background movement */
-
-@keyframes bgZoom{
-from{
-transform:scale(1);
-}
-to{
-transform:scale(1.08);
-}
-}
+/* dark overlay for readability */
 
 .intro-overlay{
-text-align:center;
-background:rgba(0,0,0,0.55);
-padding:50px 60px;
-border-radius:14px;
-color:white;
-backdrop-filter:blur(10px);
-animation:introSlide 0.9s ease;
+position:absolute;
+width:100%;
+height:100%;
+background:linear-gradient(
+to bottom,
+rgba(0,0,0,0.5),
+rgba(0,0,0,0.75)
+);
 }
 
-/* title slide */
+/* content */
 
-@keyframes introSlide{
+.intro-content{
+position:relative;
+text-align:center;
+color:white;
+animation:introFade 1s ease;
+}
+
+.intro-content h1{
+font-size:42px;
+letter-spacing:1px;
+margin-bottom:10px;
+}
+
+.intro-content p{
+opacity:0.8;
+margin-bottom:35px;
+font-size:18px;
+}
+
+/* animated button */
+
+.enter-btn{
+padding:14px 36px;
+font-size:16px;
+border:none;
+border-radius:30px;
+background:linear-gradient(135deg,#00c6ff,#0072ff);
+color:white;
+cursor:pointer;
+transition:0.3s;
+box-shadow:0 10px 25px rgba(0,0,0,0.4);
+}
+
+.enter-btn:hover{
+transform:translateY(-3px) scale(1.05);
+box-shadow:0 14px 30px rgba(0,0,0,0.5);
+}
+
+/* title animation */
+
+@keyframes introFade{
 from{
 opacity:0;
-transform:translateY(40px);
+transform:translateY(30px);
 }
 to{
 opacity:1;
@@ -195,11 +227,16 @@ background:#2196f3;
 <body>
     <div id="intro">
 
-<div class="intro-box">
-<h1>360° College Tour</h1>
-<p>Explore the classroom and project lab in immersive view.</p>
+<div class="intro-overlay"></div>
 
-<button onclick="startTour()">Start Tour</button>
+<div class="intro-content">
+<h1>UPL University of Sustainable Technology </h1>
+<p>Interactive 360° Virtual Tour</p>
+
+<button class="enter-btn" onclick="startTour()">
+Enter Tour
+</button>
+
 </div>
 
 </div>
