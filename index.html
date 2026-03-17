@@ -210,9 +210,12 @@ background:#2196f3;
 
 <div class="menu">
 <div onclick="viewer.loadScene('gate')">Main Gateway</div>
+<div onclick="viewer.loadScene('bail')">Bail Entrance</div>
+<div onclick="viewer.loadScene('meetingroom')">Meeting Room</div>
 <div onclick="viewer.loadScene('classroom')">Classroom</div>
 <div onclick="viewer.loadScene('lab')">Project Lab</div>
 <div onclick="viewer.loadScene('admin')">Admin Hall</div>
+    
 </div>
 </div>
 
@@ -250,6 +253,16 @@ var viewer = pannellum.viewer('panorama',{
 "gate": {
 "type": "equirectangular",
 "panorama": "maingate.jpeg"
+},
+
+"bail": {
+"type": "equirectangular",
+"panorama": "Bail.jpeg"
+},
+    
+"meetingroom": {
+"type": "equirectangular",
+"panorama": "meetingroom.jpeg"
 },
 
 "classroom": {
@@ -294,6 +307,14 @@ setTimeout(function(){
     
 if(scene === "gate"){
 title.innerText = "Main Gateway"
+}
+    
+if(scene === "bail"){
+title.innerText = "ail entrance"
+}
+    
+if(scene === "meetingroom"){
+title.innerText = "Meeting Room"
 }
 
 if(scene === "classroom"){
