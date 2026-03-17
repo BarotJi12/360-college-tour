@@ -261,6 +261,7 @@ Enter Tour
 <div class="menu">
 <div onclick="viewer.loadScene('classroom')">Classroom</div>
 <div onclick="viewer.loadScene('lab')">Project Lab</div>
+<div onclick="viewer.loadScene('lab')">Admin Hall</div>
 </div>
 </div>
 
@@ -300,6 +301,10 @@ var viewer = pannellum.viewer('panorama',{
 "lab": {
     "type": "equirectangular",
     "panorama": "projectlab.jpeg"
+},
+    "admin": {
+    "type": "equirectangular",
+    "panorama": "admin.jpeg"
 }
 
 }
