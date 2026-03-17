@@ -215,7 +215,12 @@ background:#2196f3;
 <div onclick="viewer.loadScene('admin')">Admin Hall</div>
 <div onclick="viewer.loadScene('meetingroom')">Meeting Room</div>
 <div onclick="viewer.loadScene('classroom')">Classroom</div>
-<div onclick="viewer.loadScene('lab')">Project Lab</div>
+<div onclick="viewer.loadScene('cc')">Computer Centre</div>
+<div onclick="viewer.loadScene('projectlab')">Project Lab</div>
+<div onclick="viewer.loadScene('cloudlab')">CLoud Computing Lab</div>
+<div onclick="viewer.loadScene('iotlab')">IoT Lab</div>
+<div onclick="viewer.loadScene('networklab')">Network Lab</div>
+<div onclick="viewer.loadScene('dbmslab')">DBMS Lab</div>
 
     
 </div>
@@ -276,10 +281,35 @@ var viewer = pannellum.viewer('panorama',{
 "type": "equirectangular",
 "panorama": "classroom.jpeg"
 },
+    
+"cc": {
+"type": "equirectangular",
+"panorama": "cc.jpeg"
+},
 
-"lab": {
+"projectlab": {
 "type": "equirectangular",
 "panorama": "projectlab.jpeg"
+},
+    
+"cloudlab": {
+"type": "equirectangular",
+"panorama": "cloud.jpeg"
+},
+    
+"iotlab": {
+"type": "equirectangular",
+"panorama": "iotlab.jpeg"
+},
+
+"networklab": {
+"type": "equirectangular",
+"panorama": "networklab.jpeg"
+},
+
+"dbmslab": {
+"type": "equirectangular",
+"panorama": "dbmslab.jpeg"
 }
 
 }
@@ -326,9 +356,29 @@ title.innerText = "Meeting Room"
 if(scene === "classroom"){
 title.innerText = "Classroom"
 }
+
+if(scene === "cc"){
+title.innerText = "Computer Centre "
+}
     
-if(scene === "lab"){
+if(scene === "projectlab"){
 title.innerText = "Project Lab"
+}
+
+if(scene === "cloudlab"){
+title.innerText = "Cloud Computing Lab"
+}
+    
+if(scene === "iotlab"){
+title.innerText = "IoT Lab"
+}
+    
+if(scene === "networklab"){
+title.innerText = "Network Lab"
+}
+    
+if(scene === "dbmstlab"){
+title.innerText = "DBMS Lab"
 }
 
 
