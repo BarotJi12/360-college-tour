@@ -212,10 +212,11 @@ background:#2196f3;
 <div class="menu">
 <div onclick="viewer.loadScene('gate')">Main Gateway</div>
 <div onclick="viewer.loadScene('bail')">Bail Entrance</div>
+<div onclick="viewer.loadScene('admin')">Admin Hall</div>
 <div onclick="viewer.loadScene('meetingroom')">Meeting Room</div>
 <div onclick="viewer.loadScene('classroom')">Classroom</div>
 <div onclick="viewer.loadScene('lab')">Project Lab</div>
-<div onclick="viewer.loadScene('admin')">Admin Hall</div>
+
     
 </div>
 </div>
@@ -260,6 +261,11 @@ var viewer = pannellum.viewer('panorama',{
 "type": "equirectangular",
 "panorama": "Bail.jpeg"
 },
+
+"admin": {
+"type": "equirectangular",
+"panorama": "admin.jpeg"
+},
     
 "meetingroom": {
 "type": "equirectangular",
@@ -274,11 +280,6 @@ var viewer = pannellum.viewer('panorama',{
 "lab": {
 "type": "equirectangular",
 "panorama": "projectlab.jpeg"
-},
-
-"admin": {
-"type": "equirectangular",
-"panorama": "admin.jpeg"
 }
 
 }
@@ -311,7 +312,11 @@ title.innerText = "Main Gateway"
 }
     
 if(scene === "bail"){
-title.innerText = "ail entrance"
+title.innerText = "Bail entrance"
+}
+    
+if(scene === "admin"){
+title.innerText = "Admin Hall"
 }
     
 if(scene === "meetingroom"){
@@ -321,12 +326,11 @@ title.innerText = "Meeting Room"
 if(scene === "classroom"){
 title.innerText = "Classroom"
 }
+    
 if(scene === "lab"){
 title.innerText = "Project Lab"
 }
-if(scene === "admin"){
-title.innerText = "Admin Hall"
-}
+
 
 title.classList.remove("title-out")
 title.classList.add("title-in")
