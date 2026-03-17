@@ -360,6 +360,27 @@ var viewer = pannellum.viewer('panorama',{
 
 });
 
+// INTRO EXIT + ENABLE DEBUG AFTER START
+function startTour(){
+
+let intro = document.getElementById("intro")
+
+intro.style.opacity = "0"
+
+setTimeout(function(){
+intro.style.display = "none"
+
+// enable debug AFTER intro
+viewer.on('mousedown', function(){
+console.log("pitch:", viewer.getPitch(), "yaw:", viewer.getYaw());
+});
+
+},700)
+
+}
+
+
+// TITLE ANIMATION (FIXED)
 viewer.on('scenechange', function(scene){
 
 let title = document.getElementById("sceneTitle")
@@ -376,7 +397,7 @@ title.innerText = "Main Gateway"
 }
     
 if(scene === "bail"){
-title.innerText = "Beil entrance"
+title.innerText = "Beil Entrance"
 }
     
 if(scene === "admin"){
@@ -424,7 +445,7 @@ title.classList.add("title-in")
 
 },400)
 
-});  
+});
 
 viewer.on('mousedown', function(){
 console.log("pitch:", viewer.getPitch(), "yaw:", viewer.getYaw());
