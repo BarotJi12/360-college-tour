@@ -209,6 +209,7 @@ background:#2196f3;
 <div class="menu-icon">☰</div>
 
 <div class="menu">
+<div onclick="viewer.loadScene('gate')">Main Gateway</div>
 <div onclick="viewer.loadScene('classroom')">Classroom</div>
 <div onclick="viewer.loadScene('lab')">Project Lab</div>
 <div onclick="viewer.loadScene('admin')">Admin Hall</div>
@@ -216,7 +217,7 @@ background:#2196f3;
 </div>
 
 <!-- TITLE -->
-<div class="scene-title" id="sceneTitle">Classroom</div>
+<div class="scene-title" id="sceneTitle">Main Gateway</div>
 
 <!-- VIEWER -->
 <div id="panorama"></div>
@@ -245,6 +246,11 @@ var viewer = pannellum.viewer('panorama',{
 },
 
 "scenes": {
+
+"gate": {
+"type": "equirectangular",
+"panorama": "maingate.jpeg"
+},
 
 "classroom": {
 "type": "equirectangular",
@@ -285,6 +291,10 @@ void title.offsetWidth
 title.classList.add("title-out")
 
 setTimeout(function(){
+    
+if(scene === "gate"){
+title.innerText = "Main Gateway"
+}
 
 if(scene === "classroom"){
 title.innerText = "Classroom"
