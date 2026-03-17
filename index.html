@@ -192,12 +192,12 @@ background:#2196f3;
 .arrow-hotspot{
 width:60px;
 height:30px;
-background:rgba(0,150,255,0.6);
+background:rgba(0,150,255,0.7);
 border-radius:50px;
-transform:rotateX(60deg);
+transform:rotateX(65deg);
 box-shadow:0 0 15px rgba(0,150,255,0.7);
+position:relative;
 cursor:pointer;
-transition:all 0.2s ease;
 }
 
 /* hover effect */
@@ -207,7 +207,7 @@ transform:rotateX(60deg) scale(1.1);
 }
     
 .arrow-hotspot::after{
-content:"➤";
+content:"▲";
 color:white;
 font-size:18px;
 position:absolute;
@@ -231,6 +231,7 @@ transform:translate(-50%,-50%);
 <button class="enter-btn" onclick="startTour()">Enter Tour</button>
 </div>
 </div>
+<div class="center-btn">Go Forward</div>
 
 <!-- MENU -->
 <div class="menu-container">
