@@ -189,6 +189,19 @@ cursor:pointer;
 background:#2196f3;
 }
 
+.arrow-hotspot{
+background:url("https://cdn-icons-png.flaticon.com/512/545/545682.png") no-repeat;
+background-size:contain;
+width:40px;
+height:40px;
+cursor:pointer;
+transition:transform 0.2s ease;
+}
+
+.arrow-hotspot:hover{
+transform:scale(1.2);
+}
+
 </style>
 </head>
 
@@ -257,15 +270,40 @@ var viewer = pannellum.viewer('panorama',{
 },
 
 "scenes": {
-
 "gate": {
 "type": "equirectangular",
-"panorama": "maingate.jpeg"
+"panorama": "maingate.jpeg",
+
+"hotSpots": [
+
+{
+"pitch": -10,
+"yaw": 40,
+"type": "scene",
+"text": "Go to Beil Entrance",
+"sceneId": "bail",
+"cssClass": "arrow-hotspot"
+}
+
+]
 },
 
 "bail": {
 "type": "equirectangular",
-"panorama": "Bail.jpeg"
+"panorama": "Bail.jpeg",
+
+"hotSpots": [
+
+{
+"pitch": -10,
+"yaw": -140,
+"type": "scene",
+"text": "Back to Main Gate",
+"sceneId": "gate",
+"cssClass": "arrow-hotspot"
+}
+
+]
 },
 
 "admin": {
@@ -322,16 +360,6 @@ var viewer = pannellum.viewer('panorama',{
 
 });
 
-/* INTRO EXIT */
-function startTour(){
-let intro = document.getElementById("intro")
-intro.style.opacity = "0"
-setTimeout(function(){
-intro.style.display = "none"
-},700)
-}
-
-/* TITLE ANIMATION */
 viewer.on('scenechange', function(scene){
 
 let title = document.getElementById("sceneTitle")
@@ -360,7 +388,7 @@ title.innerText = "Meeting Room"
 }
 
 if(scene === "cc"){
-title.innerText = "Computer Centre "
+title.innerText = "Computer Centre"
 }
     
 if(scene === "projectlab"){
@@ -391,12 +419,15 @@ if(scene === "classroom"){
 title.innerText = "Classroom"
 }
 
-
 title.classList.remove("title-out")
 title.classList.add("title-in")
 
 },400)
 
+});  
+
+viewer.on('mousedown', function(){
+console.log("pitch:", viewer.getPitch(), "yaw:", viewer.getYaw());
 });
 
 </script>
