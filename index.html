@@ -214,7 +214,6 @@ background:#2196f3;
 <div onclick="viewer.loadScene('bail')">Beil Entrance</div>
 <div onclick="viewer.loadScene('admin')">Admin Hall</div>
 <div onclick="viewer.loadScene('meetingroom')">Meeting Room</div>
-<div onclick="viewer.loadScene('classroom')">Classroom</div>
 <div onclick="viewer.loadScene('cc')">Computer Centre</div>
 <div onclick="viewer.loadScene('projectlab')">Project Lab</div>
 <div onclick="viewer.loadScene('cloudlab')">Cloud Computing Lab</div>
@@ -222,6 +221,7 @@ background:#2196f3;
 <div onclick="viewer.loadScene('networklab')">Network Lab</div>
 <div onclick="viewer.loadScene('dbmslab')">DBMS Lab</div>
 <div onclick="viewer.loadScene('oslab')">OS Lab</div>
+<div onclick="viewer.loadScene('classroom')">Classroom</div>
 
     
 </div>
@@ -277,11 +277,6 @@ var viewer = pannellum.viewer('panorama',{
 "type": "equirectangular",
 "panorama": "meetingroom1.jpg"
 },
-
-"classroom": {
-"type": "equirectangular",
-"panorama": "classroom.jpeg"
-},
     
 "cc": {
 "type": "equirectangular",
@@ -316,6 +311,11 @@ var viewer = pannellum.viewer('panorama',{
 "oslab": {
 "type": "equirectangular",
 "panorama": "oslab.jpeg"
+},
+
+"classroom": {
+"type": "equirectangular",
+"panorama": "classroom.jpeg"
 }
 
 }
@@ -359,10 +359,6 @@ if(scene === "meetingroom"){
 title.innerText = "Meeting Room"
 }
 
-if(scene === "classroom"){
-title.innerText = "Classroom"
-}
-
 if(scene === "cc"){
 title.innerText = "Computer Centre "
 }
@@ -385,6 +381,10 @@ title.innerText = "Network Lab"
     
 if(scene === "oslab"){
 title.innerText = "OS Lab"
+}
+
+if(scene === "classroom"){
+title.innerText = "Classroom"
 }
 
 
