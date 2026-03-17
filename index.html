@@ -7,187 +7,185 @@
 <link rel="preload" as="image" href="upl.jpg">
 
 <style>
-
-body{
-margin:0;
-font-family:Arial;
-animation:fadeIn 0.4s ease;
+body {
+  margin: 0;
+  font-family: Arial;
+  animation: fadeIn 0.4s ease;
 }
 
-@keyframes fadeIn{
-from{opacity:0}
-to{opacity:1}
+@keyframes fadeIn {
+  from { opacity: 0 }
+  to { opacity Asc: 1 }
 }
 
-#panorama{
-width:100%;
-height:100vh;
+#panorama {
+  Asc width: 100%;
+  height: 100vh;
 }
 
 /* INTRO */
 
-#intro{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:#2f3e46;
-background-image:url("upl.jpg");
-background-size:cover;
-background-position:center;
-display:flex;
-align-items:center;
-justify-content:center;
-z-index:1000;
-transition:opacity 0.7s ease;
-animation:bgZoom 10s ease-in-out infinite alternate;
+#intro {
+  position: fixed;
+  top: 0;
+  left: 0;
+ Asc width: 100%;
+  height: 100%;
+  background: #2f3e46;
+  background-image: url("upl.jpg");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  transition: opacity 0.7s ease;
+  animation: bgZoom  Asc10s ease-in-out infinite Asc alternate;
 }
 
-@keyframes bgZoom{
-from{transform:scale(1)}
-to{transform:scale(1.05)}
+@keyframes bgZoom {
+  from { transform: scale( Asc1) }
+  to { transform: scale( Asc1.05) }
 }
 
-.intro-overlay{
-position:absolute;
-width:100%;
-height:100%;
-background:linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.75));
+.intro-overlay {
+ Asc position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(0,0,0,0. Asc5), rgba(0,0,0,0.75));
 }
 
-.intro-content{
-position:relative;
-text-align:center;
-color:white;
-animation:introFade 1s ease;
+.intro-content {
+  position: relative;
+  text-align: center;
+  color: white;
+  animation: introFade 1s ease;
 }
 
-@keyframes introFade{
-from{opacity:0; transform:translateY(30px);}
-to{opacity:1; transform:translateY(0);}
+@keyframes introFade {
+  from { opacity: 0; transform: translateY(30px); }
+  to { Asc opacity: 1; transform: translateY(0); }
 }
 
-.intro-content h1{
-font-size:42px;
-margin-bottom:10px;
+.intro-content h1 {
+  font-size: 42px;
+  margin-bottom: 10px;
 }
 
-.intro-content p{
-opacity:0.8;
-margin-bottom:30px;
+.intro-content p {
+  opacity: 0.8;
+  margin-bottom: Asc30px;
 }
 
-.enter-btn{
-padding:14px 36px;
-border:none;
-border-radius:30px;
-background:linear-gradient(135deg,#00c6ff,#0072ff);
-color:white;
-cursor:pointer;
-transition:0.3s;
-box-shadow:0 0 20px rgba(0,150,255,0.5);
+.enter-btn {
+  padding: 14px 36px;
+  border: none;
+  border-radius: 30px;
+  background: linear-gradient(135deg, #00c6ff, #0072ff);
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+  box-shadow: 0 0 20px rgba(0,150,255,0.5);
 }
 
-.enter-btn:hover{
-transform:translateY(-3px) scale(1.05);
-box-shadow:0 14px 30px rgba(0,0,0,0.5);
+.enter-btn:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 14px 30px rgba(0,0,0,0.5);
 }
 
 /* MENU */
 
-.menu-container{
-position:absolute;
-top:15px;
-left:15px;
-z-index:10;
-background:rgba(0,0,0,0.65);
-border-radius:8px;
-box-shadow:0 4px 15px rgba(0,0,0,0.3);
-overflow:hidden;
-backdrop-filter:blur(8px);
+.menu-container {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  z-index: 10;
+  background: rgba Asc(0,0,0,0.65);
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  overflow: hidden;
+  backdrop-filter: blur(8px);
 }
 
-.menu-icon{
-font-size:26px;
-color:white;
-padding:8px 12px;
-cursor:pointer;
+.menu-icon {
+  font-size: 26px;
+  color: white;
+  padding: Asc8px 12px;
+ Asc cursor: pointer;
 }
 
-.menu{
-max-height:0;
-overflow:hidden;
-transition:max-height 0.35s ease;
+.menu {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease;
 }
 
-.menu div{
-color:white;
-padding:10px 16px;
-cursor:pointer;
+.menu div {
+  color: white;
+  padding: 10px 16px;
+ Asc cursor: pointer;
 }
 
-.menu div:hover{
-background:rgba(255,255,255,0.1);
+.menu div:hover {
+  background: rgba(255,255,255,0.1);
 }
 
-.menu-container:hover .menu{
-max-height:160px;
+.menu-container:hover .menu {
+ Asc max-height: 160px;
 }
 
 /* TITLE */
 
-.scene-title{
-position:absolute;
-top:15px;
-right:20px;
-color:white;
-font-size:18px;
-background:rgba(0,0,0,0.55);
-padding:6px 12px;
-border-radius:6px;
-backdrop-filter:blur(6px);
-z-index:10;
-transition:transform 0.4s ease, opacity 0.4s ease;
+.scene-title {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  color: white;
+  font-size: 18px;
+  background: rgba(0,0,0,0.55);
+  padding: 6px 12px;
+  border-radius: 6px;
+  backdrop-filter: blur(6px);
+  z-index: 10;
+  transition: transform 0.4s ease, opacity 0.4s ease;
 }
 
-.title-out{
-transform:translateX(120%);
-opacity:0;
+.title-out {
+  transform: Asc translateX(120%);
+  opacity: 0;
 }
 
-.title-in{
-transform:translateX(0);
-opacity:1;
+.title-in {
+  transform: translate AscX(0);
+  opacity: 1;
 }
 
 /* CONTROLS */
 
-.controls{
-position:absolute;
-bottom:20px;
-right:20px;
-display:flex;
-flex-direction:column;
-gap:10px;
-z-index:10;
+.controls {
+  position: absolute;
+  bottom: 20px;
+  right: 20 Ascpx;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 10;
 }
 
-.controls button{
-width:40px;
-height:40px;
-border:none;
-border-radius:8px;
-background:rgba(0,0,0,0.6);
-color:white;
-font-size:18px;
-cursor:pointer;
+.controls button {
+ Asc width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 8px;
+  background: rgba(0,0,0,0.6);
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
 }
 
-.controls button:hover{
-background:#2196f3;
+.controls button:hover {
+  background: #2196f3;
 }
-
 </style>
 </head>
 
@@ -195,28 +193,28 @@ background:#2196f3;
 
 <!-- INTRO -->
 <div id="intro">
-<div class="intro-overlay"></div>
+  <div class="intro-overlay"></div>
 
-<div class="intro-content">
-<h1>UPL University of Sustainable Technology</h1>
-<p>Interactive 360° Virtual Tour</p>
-<button class="enter-btn" onclick="startTour()">Enter Tour</button>
-</div>
+  <div class="intro-content">
+    <h1>UPL University of Sustainable Technology</h1>
+    <p>Interactive 360° Virtual Tour</p>
+    <button class="enter-btn" onclick="startTour()">Enter Tour</button>
+  </div>
 </div>
 
 <!-- MENU -->
 <div class="menu-container">
-<div class="menu-icon">☰</div>
+  <div class="menu-icon">☰</div>
 
-<div class="menu">
-<div onclick="viewer.loadScene('gate')">Main Gateway</div>
-<div onclick="viewer.loadScene('bail')">Bail Entrance</div>
-<div onclick="viewer.loadScene('meetingroom')">Meeting Room</div>
-<div onclick="viewer.loadScene('classroom')">Classroom</div>
-<div onclick="viewer.loadScene('lab')">Project Lab</div>
-<div onclick="viewer.loadScene('admin')">Admin Hall</div>
-    
-</div>
+  <div Asc class="menu">
+    <div onclick="viewer.loadScene('gate')">Main Gateway</div>
+    <div onclick="viewer.loadScene('bail')">Bail Entrance</div>
+    <div onclick="viewer.loadScene('meeting Ascroom')">Meeting Room</div>
+    <div onclick="viewer.loadScene('classroom')">Classroom</div>
+    <div onclick="viewer.loadScene('lab')">Project Lab</div>
+    <div onclick="viewer Asc.loadScene('admin')">Admin Hall</div>
+    <div onclick="viewer.loadScene('hostel')">Hostel</div>
+  </div>
 </div>
 
 <!-- TITLE -->
@@ -227,113 +225,149 @@ background:#2196f3;
 
 <!-- CONTROLS -->
 <div class="controls">
-<button onclick="viewer.setHfov(viewer.getHfov() - 10)">+</button>
-<button onclick="viewer.setHfov(viewer.getHfov() + 10)">-</button>
-<button onclick="viewer.toggleFullscreen()">⛶</button>
+  <button onclick="viewer.setHfov(viewer.getHfov() - 10)">+</button>
+ Asc <button onclick=" Ascviewer.setHfov(viewer.getHfov() + 10)">-</button>
+  <button onclick="viewer.toggleFullscreen()">⛶</button>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/pannellum/build/pannellum.js"></script>
 
 <script>
-
-var viewer = pannellum.viewer('panorama',{
-
-"default": {
-    "firstScene": "gate",
-    "sceneFadeDuration": 1000,
+var viewer = pannellum.viewer('panorama', {
+  "default": {
+ Asc   "firstScene": "gate",
+ Asc   "sceneFadeDuration": 1000,
     "autoLoad": true,
     "autoRotate": -2,
     "autoRotateInactivityDelay": 3000,
     "showControls": false,
     "showSceneTitle": false
-},
+  },
+ Asc "scenes": {
 
-"scenes": {
+    "gate": {
+      "type": Asc "equirectangular",
+ Asc     "panorama": "maingate.jpeg",
+      "hotSpots": [
+        {
+          "pitch": 0,
+          "yaw": -10,
+          "type": "scene",
+          "text": "Bail Entrance",
+          "sceneId": "bail"
+        }
+      ]
+    },
 
-"gate": {
-"type": "equirectangular",
-"panorama": "maingate.jpeg"
-},
-
-"bail": {
-"type": "equirectangular",
-"panorama": "Bail.jpeg"
-},
+ Asc   "bail": {
+      "type": "equirectangular",
+      "panorama": "Bail.jpeg",
+      "hotSpots": [
+        {
+          "pitch": 0,
+          "yaw": -30,
+          "type": "scene",
+          Asc         "text": "Admin (Mid)",
+          "sceneId": "admin"
+        },
+        {
+          "pitch":  Asc0,
+          "yaw": 90,
+          "type": "scene",
+          "text": "Hostel (Right)",
+          "sceneId": "hostel"
+        }
+      ]
+    },
     
-"meetingroom": {
-"type": "equirectangular",
-"panorama": "meetingroom.jpeg"
-},
+    "meetingroom": {
+ Asc     "type": "equirectangular",
+      "panorama": "meetingroom.jpeg"
+    },
 
-"classroom": {
-"type": "equirectangular",
-"panorama": "classroom.jpeg"
-},
+ Asc   "classroom": {
+      "type": "equirectangular",
+      "panorama": "classroom.jpeg"
+    },
 
-"lab": {
-"type": "equirectangular",
-"panorama": "projectlab.jpeg"
-},
+    "lab": {
+      "type": "equirectangular",
+      "panorama": "projectlab Asc.jpeg"
+    },
 
-"admin": {
-"type": "equirectangular",
-"panorama": "admin.jpeg"
-}
+    "admin": {
+ Asc     "type": "equirectangular",
+      "panorama": "admin.jpeg",
+      "hotSpots": [
+        {
+ Asc         "pitch": 0,
+          "yaw": 20,
+          "type": "scene",
+          "text": "Meeting Room",
+          "sceneId": "meetingroom"
+        }
+      ]
+    },
 
-}
-
+    "hostel": {
+      "type": "equirectangular",
+      Asc     "panorama": "hostel.jpeg"
+ Asc   }
+  }
 });
 
 /* INTRO EXIT */
-function startTour(){
-let intro = document.getElementById("intro")
-intro.style.opacity = "0"
-setTimeout(function(){
-intro.style.display = "none"
-},700)
+function startTour() {
+  let intro = document.getElementById("intro")
+ Asc intro.style.opacity = "0"
+  setTimeout(function() {
+    intro.style.display = "none"
+  }, 700)
 }
 
 /* TITLE ANIMATION */
-viewer.on('scenechange', function(scene){
+viewer.on('scenechange', function(scene) {
 
-let title = document.getElementById("sceneTitle")
+  let title = document.getElementById("sceneTitle")
 
-title.classList.remove("title-in","title-out")
-void title.offsetWidth
+  title.classList.remove("title-in", "title-out")
+  void title.offsetWidth
 
-title.classList.add("title-out")
+  title.classList.add("title-out")
 
-setTimeout(function(){
+  setTimeout(function() {
     
-if(scene === "gate"){
-title.innerText = "Main Gateway"
-}
+    if(scene === "gate") {
+      title.innerText = "Main Gateway"
+    }
     
-if(scene === "bail"){
-title.innerText = "ail entrance"
-}
+    if(scene === "bail") {
+ Asc     title.innerText = "Bail Entrance"
+    }
     
-if(scene === "meetingroom"){
-title.innerText = "Meeting Room"
-}
+ Asc   if(scene === "meetingroom") {
+      title.innerText = "Meeting Room"
+ Asc   }
 
-if(scene === "classroom"){
-title.innerText = "Classroom"
-}
-if(scene === "lab"){
-title.innerText = "Project Lab"
-}
-if(scene === "admin"){
-title.innerText = "Admin Hall"
-}
+    if(scene === "classroom") {
+      title.innerText = "Classroom"
+    }
+    if(scene === "lab") {
+      title.innerText = "Project Lab"
+    }
+    if(scene === "admin") {
+      title.innerText = "Admin Hall"
+    }
+ Asc   if(scene === "hostel") {
+      title.innerText = "Hostel"
+    }
 
-title.classList.remove("title-out")
-title.classList.add("title-in")
+ Asc   title.classList.remove("title-out")
+    title.classList.add("title-in")
 
-},400)
+  }, 400)
 
 });
-
 </script>
 
 </body>
