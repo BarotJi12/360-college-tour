@@ -221,6 +221,7 @@ background:#2196f3;
 <div onclick="viewer.loadScene('iotlab')">IoT Lab</div>
 <div onclick="viewer.loadScene('networklab')">Network Lab</div>
 <div onclick="viewer.loadScene('dbmslab')">DBMS Lab</div>
+<div onclick="viewer.loadScene('oslab')">OS Lab</div>
 
     
 </div>
@@ -310,6 +311,11 @@ var viewer = pannellum.viewer('panorama',{
 "dbmslab": {
 "type": "equirectangular",
 "panorama": "dbmslab.jpeg"
+},
+
+"oslab": {
+"type": "equirectangular",
+"panorama": "oslab.jpeg"
 }
 
 }
@@ -377,8 +383,8 @@ if(scene === "networklab"){
 title.innerText = "Network Lab"
 }
     
-if(scene === "dbmslab"){
-title.innerText = "DBMS Lab"
+if(scene === "oslab"){
+title.innerText = "OS Lab"
 }
 
 
