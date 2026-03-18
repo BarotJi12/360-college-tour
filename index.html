@@ -189,32 +189,6 @@ cursor:pointer;
 background:#2196f3;
 }
 
-.arrow-hotspot{
-width:60px;
-height:30px;
-background:rgba(0,150,255,0.7);
-border-radius:50px;
-transform:rotateX(65deg);
-box-shadow:0 0 15px rgba(0,150,255,0.7);
-position:relative;
-cursor:pointer;
-}
-
-/* hover effect */
-.arrow-hotspot:hover{
-background:rgba(0,150,255,0.9);
-transform:rotateX(60deg) scale(1.1);
-}
-    
-.arrow-hotspot::after{
-content:"▲";
-color:white;
-font-size:18px;
-position:absolute;
-top:50%;
-left:50%;
-transform:translate(-50%,-50%);
-}
 
 </style>
 </head>
@@ -283,7 +257,6 @@ var viewer = pannellum.viewer('panorama',{
     "showSceneTitle": false
 },
 
-"scenes": {
 "gate": {
 "type": "equirectangular",
 "panorama": "maingate.jpeg",
@@ -291,12 +264,11 @@ var viewer = pannellum.viewer('panorama',{
 "hotSpots": [
 
 {
-"pitch": -10,
+"pitch": 0,
 "yaw": 0,
 "type": "scene",
 "text": "Go to Beil Entrance",
-"sceneId": "bail",
-"cssClass": "arrow-hotspot"
+"sceneId": "bail"
 }
 
 ]
