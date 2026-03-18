@@ -246,7 +246,6 @@ background:#2196f3;
 <script>
 
 var viewer = pannellum.viewer('panorama',{
-
 "default": {
     "firstScene": "gate",
     "sceneFadeDuration": 1000,
@@ -257,12 +256,12 @@ var viewer = pannellum.viewer('panorama',{
     "showSceneTitle": false
 },
 
+"scenes": {
+
 "gate": {
 "type": "equirectangular",
 "panorama": "maingate.jpeg",
-
 "hotSpots": [
-
 {
 "pitch": 0,
 "yaw": 0,
@@ -270,38 +269,24 @@ var viewer = pannellum.viewer('panorama',{
 "text": "Go to Beil Entrance",
 "sceneId": "bail"
 }
-
 ]
 },
 
 "bail": {
 "type": "equirectangular",
-"panorama": "Bail.jpeg",
-
-"hotSpots": [
-
-{
-"pitch": -10,
-"yaw": -140,
-"type": "scene",
-"text": "Back to Main Gate",
-"sceneId": "gate",
-"cssClass": "arrow-hotspot"
-}
-
-]
+"panorama": "Bail.jpeg"
 },
 
 "admin": {
 "type": "equirectangular",
 "panorama": "admin.jpeg"
 },
-    
+
 "meetingroom": {
 "type": "equirectangular",
 "panorama": "meetingroom1.jpg"
 },
-    
+
 "cc": {
 "type": "equirectangular",
 "panorama": "cc.jpeg"
@@ -311,12 +296,12 @@ var viewer = pannellum.viewer('panorama',{
 "type": "equirectangular",
 "panorama": "projectlab.jpeg"
 },
-    
+
 "cloudlab": {
 "type": "equirectangular",
 "panorama": "cloud.jpeg"
 },
-    
+
 "iotlab": {
 "type": "equirectangular",
 "panorama": "iotlab.jpeg"
