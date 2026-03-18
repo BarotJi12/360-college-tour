@@ -361,7 +361,8 @@ var viewer = pannellum.viewer('panorama',{
 "type": "scene",
 "text": "Go to Admin Hall",
 "sceneId": "admin",
-"cssClass": "hotspot-base arrow-right"
+"cssClass": "hotspot-base arrow-right",
+"createTooltipFunc": hotspot
 }
 
 ]
@@ -432,105 +433,74 @@ var viewer = pannellum.viewer('panorama',{
 });
 
 // INTRO EXIT + ENABLE DEBUG AFTER START
-function startTour(){
+<script src="https://cdn.jsdelivr.net/npm/pannellum/build/pannellum.js"></script>
 
-let intro = document.getElementById("intro")
+<script>
 
-intro.style.opacity = "0"
-
-setTimeout(function(){
-intro.style.display = "none"
-
-// enable debug AFTER intro
-viewer.on('mousedown', function(){
-console.log("pitch:", viewer.getPitch(), "yaw:", viewer.getYaw());
+// ✅ 1. FIRST: create viewer
+var viewer = pannellum.viewer('panorama', {
+   // your config here
 });
 
-},700)
 
+// ✅ 2. THEN: paste your functions BELOW
+
+function startTour(){
+    let intro = document.getElementById("intro")
+
+    intro.style.opacity = "0"
+
+    setTimeout(function(){
+        intro.style.display = "none"
+
+        viewer.on('mousedown', function(){
+            console.log("pitch:", viewer.getPitch(), "yaw:", viewer.getYaw());
+        });
+
+    },700)
 }
 
 
-// TITLE ANIMATION (FIXED)
+// TITLE ANIMATION
 viewer.on('scenechange', function(scene){
 
-let title = document.getElementById("sceneTitle")
+    let title = document.getElementById("sceneTitle")
 
-title.classList.remove("title-in","title-out")
-void title.offsetWidth
+    title.classList.remove("title-in","title-out")
+    void title.offsetWidth
 
-title.classList.add("title-out")
+    title.classList.add("title-out")
 
-setTimeout(function(){
-    
-if(scene === "gate"){
-title.innerText = "Main Gateway"
-}
-    
-if(scene === "bail"){
-title.innerText = "Beil Entrance"
-}
-    
-if(scene === "admin"){
-title.innerText = "Admin Hall"
-}
-    
-if(scene === "meetingroom"){
-title.innerText = "Meeting Room"
-}
+    setTimeout(function(){
 
-if(scene === "cc"){
-title.innerText = "Computer Centre"
-}
-    
-if(scene === "projectlab"){
-title.innerText = "Project Lab"
-}
+        if(scene === "gate") title.innerText = "Main Gateway"
+        if(scene === "bail") title.innerText = "Beil Entrance"
+        if(scene === "admin") title.innerText = "Admin Hall"
+        if(scene === "meetingroom") title.innerText = "Meeting Room"
+        if(scene === "cc") title.innerText = "Computer Centre"
+        if(scene === "projectlab") title.innerText = "Project Lab"
+        if(scene === "cloudlab") title.innerText = "Cloud Computing Lab"
+        if(scene === "iotlab") title.innerText = "IoT Lab"
+        if(scene === "networklab") title.innerText = "Network Lab"
+        if(scene === "dbmslab") title.innerText = "DBMS Lab"
+        if(scene === "oslab") title.innerText = "OS Lab"
+        if(scene === "aimllab") title.innerText = "AIML Lab"
+        if(scene === "wtlab") title.innerText = "WT Lab"
+        if(scene === "classroom") title.innerText = "Classroom"
 
-if(scene === "cloudlab"){
-title.innerText = "Cloud Computing Lab"
-}
-    
-if(scene === "iotlab"){
-title.innerText = "IoT Lab"
-}
-    
-if(scene === "networklab"){
-title.innerText = "Network Lab"
-}
+        title.classList.remove("title-out")
+        title.classList.add("title-in")
 
-if(scene === "dbmslab"){
-title.innerText = "DBMS Lab"
-}
-
-if(scene === "oslab"){
-title.innerText = "OS Lab"
-}
-
-if(scene === "aimllab"){
-title.innerText = "AIML Lab"
-}
-
-if(scene === "wtlab"){
-title.innerText = "WT Lab"
-}
-
-if(scene === "classroom"){
-title.innerText = "Classroom"
-}
-
-title.classList.remove("title-out")
-title.classList.add("title-in")
-
-},400)
+    },400)
 
 });
 
+
+// OPTIONAL: keep only ONE of these
 viewer.on('mousedown', function(){
-console.log("pitch:", viewer.getPitch(), "yaw:", viewer.getYaw());
+    console.log("pitch:", viewer.getPitch(), "yaw:", viewer.getYaw());
 });
 
 </script>
-
 </body>
 </html>
