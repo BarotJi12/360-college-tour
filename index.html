@@ -206,17 +206,16 @@ animation:btnFlow 4s ease infinite;
 }
 
 .pnlm-hotspot {
-    transform: scale(1.2); /* instead of width/height */
     filter: drop-shadow(0 0 10px #00c6ff);
-    transition: transform 0.3s ease;
+    transition: transform 0.2s ease, filter 0.2s ease;
 }
 
-/* HOVER */
+/* IMPORTANT: use scale inside hover ONLY */
 .pnlm-hotspot:hover {
-    transform: scale(1.5);
+    transform: scale(1.2) !important;
 }
 
-/* OPTIONAL: glow pulse without breaking */
+/* Glow animation WITHOUT breaking position */
 .pnlm-hotspot .pnlm-sprite {
     animation: pulseGlow 1.5s infinite;
 }
@@ -226,7 +225,6 @@ animation:btnFlow 4s ease infinite;
     50% { filter: drop-shadow(0 0 20px #00c6ff); }
     100% { filter: drop-shadow(0 0 5px #00c6ff); }
 }
-
 </style>
 </head>
 
@@ -338,7 +336,17 @@ var viewer = pannellum.viewer('panorama',{
 
 "admin": {
 "type": "equirectangular",
-"panorama": "admin.jpeg"
+"panorama": "admin.jpeg",
+
+"hotSpots": [
+{
+    "pitch": 0,
+    "yaw": 180,
+    "type": "scene",
+    "text": "Go to Beil Entrance",
+    "sceneId": "bail"
+}
+]
 },
 
 "meetingroom": {
