@@ -1,7 +1,3 @@
-ok mean chat is linked here..
-
-
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -207,6 +203,28 @@ animation:btnFlow 4s ease infinite;
 0%{background-position:0% 50%}
 50%{background-position:100% 50%}
 100%{background-position:0% 50%}
+}
+
+.pnlm-hotspot {
+    transform: scale(1.2); /* instead of width/height */
+    filter: drop-shadow(0 0 10px #00c6ff);
+    transition: transform 0.3s ease;
+}
+
+/* HOVER */
+.pnlm-hotspot:hover {
+    transform: scale(1.5);
+}
+
+/* OPTIONAL: glow pulse without breaking */
+.pnlm-hotspot .pnlm-sprite {
+    animation: pulseGlow 1.5s infinite;
+}
+
+@keyframes pulseGlow {
+    0% { filter: drop-shadow(0 0 5px #00c6ff); }
+    50% { filter: drop-shadow(0 0 20px #00c6ff); }
+    100% { filter: drop-shadow(0 0 5px #00c6ff); }
 }
 
 </style>
