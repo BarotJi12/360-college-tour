@@ -207,23 +207,10 @@ animation:btnFlow 4s ease infinite;
 
 .pnlm-hotspot {
     filter: drop-shadow(0 0 10px #00c6ff);
-    transition: transform 0.2s ease, filter 0.2s ease;
 }
 
-/* IMPORTANT: use scale inside hover ONLY */
-.pnlm-hotspot:hover {
-    transform: scale(1.2) !important;
-}
-
-/* Glow animation WITHOUT breaking position */
 .pnlm-hotspot .pnlm-sprite {
     animation: pulseGlow 1.5s infinite;
-}
-
-@keyframes pulseGlow {
-    0% { filter: drop-shadow(0 0 5px #00c6ff); }
-    50% { filter: drop-shadow(0 0 20px #00c6ff); }
-    100% { filter: drop-shadow(0 0 5px #00c6ff); }
 }
 </style>
 </head>
