@@ -206,56 +206,6 @@ animation:btnFlow 4s ease infinite;
 100%{background-position:0% 50%}
 }
 
-/* base style (same for all) */
-.hotspot-base{
-width:70px;
-height:35px;
-background:rgba(0,150,255,0.7);
-border-radius:50px;
-position:relative;
-cursor:pointer;
-backdrop-filter:blur(4px);
-box-shadow:0 0 15px rgba(0,150,255,0.6);
-transition:all 0.25s ease;
-transform:rotateX(65deg);
-}
-
-/* arrow common */
-.hotspot-base::after{
-content:"➤";
-color:white;
-font-size:20px;
-position:absolute;
-top:50%;
-left:50%;
-transform:translate(-50%,-50%);
-}
-
-/* directions */
-.arrow-right::after{
-transform:translate(-50%,-50%) rotate(0deg);
-}
-
-.arrow-left::after{
-transform:translate(-50%,-50%) rotate(180deg);
-}
-
-.arrow-forward::after{
-transform:translate(-50%,-50%) rotate(-90deg);
-}
-
-.arrow-back::after{
-transform:translate(-50%,-50%) rotate(90deg);
-}
-
-/* hover */
-.hotspot-base:hover{
-background:rgba(0,150,255,0.95);
-transform:rotateX(65deg) scale(1.1);
-box-shadow:0 0 25px rgba(0,150,255,1);
-}
-
-
 </style>
 </head>
 
@@ -347,13 +297,12 @@ var viewer = pannellum.viewer('panorama',{
 "hotSpots": [
 
 {
-"pitch": 0,
-"yaw": -120,
+"pitch": -10,
+"yaw": 180,
 "type": "scene",
-"text": "Back to Main Gate",
-"sceneId": "gate",
-"cssClass": "hotspot-base arrow-forward"
-},
+"text": "Back to Beil Entrance",
+"sceneId": "bail"
+}
 
 {
 "pitch": 0,
