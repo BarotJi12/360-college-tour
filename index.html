@@ -419,6 +419,15 @@ let targetYaw = 0;
 let targetPitch = 0;
 let gyroActive = false;
 
+
+// START GYRO
+function startGyro(){
+    window.addEventListener('deviceorientation', handleOrientation);
+    requestAnimationFrame(smoothMove);
+}
+
+
+// ENABLE / DISABLE
 function enableGyro(){
 
     gyroActive = !gyroActive;
@@ -432,18 +441,16 @@ function enableGyro(){
             DeviceOrientationEvent.requestPermission()
             .then(response => {
                 if (response === 'granted') {
-                    window.addEventListener('deviceorientation', handleOrientation);
-                    smoothMove();
+                    startGyro();
                 }
             })
             .catch(console.error);
 
         } else {
-            window.addEventListener('deviceorientation', handleOrientation);
-            smoothMove();
+            startGyro();
         }
 
-        if(btn) btn.innerText = "Stop VR";
+        if(btn) btn.innerText = "VR";
 
     } else {
 
@@ -459,7 +466,7 @@ function handleOrientation(event){
 
     if(event.alpha !== null && event.beta !== null){
         targetYaw = event.alpha;
-        targetPitch = event.beta - 30;
+        targetPitch = event.beta;
     }
 
 }
@@ -468,16 +475,16 @@ function handleOrientation(event){
 // SMOOTH MOVEMENT
 function smoothMove(){
 
-    if(!gyroActive) return; // stop when OFF
+    if(!gyroActive) return;
 
     let currentYaw = viewer.getYaw();
     let currentPitch = viewer.getPitch();
 
-    currentYaw += (targetYaw - currentYaw) * 0.1;
-    currentPitch += (targetPitch - currentPitch) * 0.1;
+    let newYaw = currentYaw + (targetYaw - currentYaw) * 0.08;
+    let newPitch = currentPitch + (targetPitch - currentPitch) * 0.08;
 
-    viewer.setYaw(currentYaw);
-    viewer.setPitch(currentPitch);
+    viewer.setYaw(newYaw);
+    viewer.setPitch(newPitch);
 
     requestAnimationFrame(smoothMove);
 }
