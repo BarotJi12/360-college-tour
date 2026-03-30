@@ -263,6 +263,8 @@ animation:btnFlow 4s ease infinite;
 <button onclick="viewer.setHfov(viewer.getHfov() - 10)">+</button>
 <button onclick="viewer.setHfov(viewer.getHfov() + 10)">-</button>
 <button onclick="viewer.toggleFullscreen()">⛶</button>
+
+<button onclick="enableGyro()">VR</button>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/pannellum/build/pannellum.js"></script>
@@ -412,6 +414,40 @@ var viewer = pannellum.viewer('panorama',{
 }
 
 });
+
+function enableGyro(){
+
+if (typeof DeviceOrientationEvent.requestPermission === 'function') {
+
+    DeviceOrientationEvent.requestPermission()
+    .then(response => {
+        if (response === 'granted') {
+            window.addEventListener('deviceorientation', handleOrientation);
+        }
+    })
+    .catch(console.error);
+
+} else {
+    window.addEventListener('deviceorientation', handleOrientation);
+}
+
+}
+
+function handleOrientation(event){
+
+let yaw = event.alpha;
+let pitch = event.beta;
+
+if(yaw !== null && pitch !== null){
+let smoothYaw = yaw * 0.5;
+let smoothPitch = pitch * 0.5;
+
+viewer.setYaw(smoothYaw);
+viewer.setPitch(smoothPitch - 30);
+}
+
+}
+
 
 // INTRO EXIT + ENABLE DEBUG AFTER START
 function startTour(){
