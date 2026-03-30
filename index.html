@@ -92,7 +92,7 @@ transform:translateY(-3px) scale(1.05);
 box-shadow:0 14px 30px rgba(0,0,0,0.5);
 }
 
-/* MENU */
+/* MENU CONTAINER */
 
 .menu-container{
     position:absolute;
@@ -105,11 +105,10 @@ box-shadow:0 14px 30px rgba(0,0,0,0.5);
     box-shadow:0 4px 15px rgba(0,0,0,0.3);
     backdrop-filter:blur(8px);
 
-    overflow:hidden;
-
-    width:fit-content; /* 🔥 FIX: removes extra width */
-    display:inline-block; /* extra safety */
+    overflow:visible;
 }
+
+/* ICON */
 
 .menu-icon{
     font-size:26px;
@@ -118,14 +117,22 @@ box-shadow:0 14px 30px rgba(0,0,0,0.5);
     cursor:pointer;
 }
 
-/* MENU LIST */
+/* MENU (HIDDEN FROM LAYOUT) */
 
 .menu{
-    max-height:0;
-    overflow-y:auto;
-    transition:max-height 0.35s ease;
+    position:absolute;
+    top:0;
+    left:100%;
 
-    white-space:nowrap; /* 🔥 prevents weird width stretch */
+    background:rgba(0,0,0,0.65);
+    border-radius:8px;
+
+    opacity:0;
+    pointer-events:none;
+
+    transition:0.3s ease;
+
+    min-width:200px;
 }
 
 /* ITEMS */
@@ -140,10 +147,12 @@ box-shadow:0 14px 30px rgba(0,0,0,0.5);
     background:rgba(255,255,255,0.1);
 }
 
-/* EXPAND */
+/* ON HOVER → SHOW + EXPAND SIDE */
 
 .menu-container:hover .menu{
-    max-height:200px;
+    opacity:1;
+    pointer-events:auto;
+    transform:translateX(10px);
 }
 
 .scene-title{
