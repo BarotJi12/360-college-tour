@@ -92,7 +92,7 @@ transform:translateY(-3px) scale(1.05);
 box-shadow:0 14px 30px rgba(0,0,0,0.5);
 }
 
-/* MENU CONTAINER */
+/* MENU */
 
 .menu-container{
     position:absolute;
@@ -105,7 +105,8 @@ box-shadow:0 14px 30px rgba(0,0,0,0.5);
     box-shadow:0 4px 15px rgba(0,0,0,0.3);
     backdrop-filter:blur(8px);
 
-    overflow:visible;
+    display:inline-block;   /* keeps it tight */
+    overflow:visible;       /* allows dropdown outside */
 }
 
 /* ICON */
@@ -117,20 +118,20 @@ box-shadow:0 14px 30px rgba(0,0,0,0.5);
     cursor:pointer;
 }
 
-/* MENU (HIDDEN FROM LAYOUT) */
+/* MENU LIST */
 
 .menu{
-    position:absolute;
-    top:0;
-    left:100%;
+    position:absolute;      /* 🔥 removes from layout */
+    top:100%;
+    left:0;
 
     background:rgba(0,0,0,0.65);
     border-radius:8px;
+    margin-top:5px;
 
-    opacity:0;
-    pointer-events:none;
-
-    transition:0.3s ease;
+    max-height:0;
+    overflow-y:auto;
+    transition:max-height 0.35s ease;
 
     min-width:200px;
 }
@@ -147,12 +148,10 @@ box-shadow:0 14px 30px rgba(0,0,0,0.5);
     background:rgba(255,255,255,0.1);
 }
 
-/* ON HOVER → SHOW + EXPAND SIDE */
+/* EXPAND (same smooth animation) */
 
 .menu-container:hover .menu{
-    opacity:1;
-    pointer-events:auto;
-    transform:translateX(10px);
+    max-height:200px;
 }
 
 .scene-title{
