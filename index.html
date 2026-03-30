@@ -264,7 +264,7 @@ animation:btnFlow 4s ease infinite;
 <button onclick="viewer.setHfov(viewer.getHfov() + 10)">-</button>
 <button onclick="viewer.toggleFullscreen()">⛶</button>
 
-<button onclick="enableGyro()">VR</button>
+<button id="vrBtn" onclick="enableGyro()">VR</button>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/pannellum/build/pannellum.js"></script>
@@ -415,56 +415,89 @@ var viewer = pannellum.viewer('panorama',{
 
 });
 
+let targetYaw = 0;
+let targetPitch = 0;
+let gyroActive = false;
+
 function enableGyro(){
 
-if (typeof DeviceOrientationEvent.requestPermission === 'function') {
+    gyroActive = !gyroActive;
 
-    DeviceOrientationEvent.requestPermission()
-    .then(response => {
-        if (response === 'granted') {
+    let btn = document.getElementById("vrBtn");
+
+    if(gyroActive){
+
+        if (typeof DeviceOrientationEvent.requestPermission === 'function') {
+
+            DeviceOrientationEvent.requestPermission()
+            .then(response => {
+                if (response === 'granted') {
+                    window.addEventListener('deviceorientation', handleOrientation);
+                    smoothMove();
+                }
+            })
+            .catch(console.error);
+
+        } else {
             window.addEventListener('deviceorientation', handleOrientation);
+            smoothMove();
         }
-    })
-    .catch(console.error);
 
-} else {
-    window.addEventListener('deviceorientation', handleOrientation);
+        if(btn) btn.innerText = "Stop VR";
+
+    } else {
+
+        window.removeEventListener('deviceorientation', handleOrientation);
+
+        if(btn) btn.innerText = "VR";
+    }
 }
 
-}
 
+// HANDLE SENSOR
 function handleOrientation(event){
 
-let yaw = event.alpha;
-let pitch = event.beta;
+    if(event.alpha !== null && event.beta !== null){
+        targetYaw = event.alpha;
+        targetPitch = event.beta - 30;
+    }
 
-if(yaw !== null && pitch !== null){
-let smoothYaw = yaw * 0.5;
-let smoothPitch = pitch * 0.5;
-
-viewer.setYaw(smoothYaw);
-viewer.setPitch(smoothPitch - 30);
 }
 
+
+// SMOOTH MOVEMENT
+function smoothMove(){
+
+    if(!gyroActive) return; // stop when OFF
+
+    let currentYaw = viewer.getYaw();
+    let currentPitch = viewer.getPitch();
+
+    currentYaw += (targetYaw - currentYaw) * 0.1;
+    currentPitch += (targetPitch - currentPitch) * 0.1;
+
+    viewer.setYaw(currentYaw);
+    viewer.setPitch(currentPitch);
+
+    requestAnimationFrame(smoothMove);
 }
 
 
 // INTRO EXIT + ENABLE DEBUG AFTER START
 function startTour(){
 
-let intro = document.getElementById("intro")
+    let intro = document.getElementById("intro")
 
-intro.style.opacity = "0"
+    intro.style.opacity = "0"
 
-setTimeout(function(){
-intro.style.display = "none"
+    setTimeout(function(){
+        intro.style.display = "none"
 
-// enable debug AFTER intro
-viewer.on('mousedown', function(){
-console.log("pitch:", viewer.getPitch(), "yaw:", viewer.getYaw());
-});
+        viewer.on('mousedown', function(){
+            console.log("pitch:", viewer.getPitch(), "yaw:", viewer.getYaw());
+        });
 
-},700)
+    },700)
 
 }
 
@@ -552,6 +585,3 @@ console.log("pitch:", viewer.getPitch(), "yaw:", viewer.getYaw());
 
 </body>
 </html>
-
-
-this is the backup 1.. now we will do some stuff 
