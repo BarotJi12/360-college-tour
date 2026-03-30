@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -104,7 +106,7 @@ z-index:10;
 background:rgba(0,0,0,0.65);
 border-radius:8px;
 box-shadow:0 4px 15px rgba(0,0,0,0.3);
-overflow:visible;
+overflow:hidden;
 backdrop-filter:blur(8px);
 }
 
@@ -134,12 +136,6 @@ background:rgba(255,255,255,0.1);
 .menu-container:hover .menu{
 max-height:200px;
 }
-
-.menu {
-    max-height: 250px;
-    overflow-y: auto;
-}
-
 
 /* TITLE */
 
@@ -211,13 +207,6 @@ animation:btnFlow 4s ease infinite;
 100%{background-position:0% 50%}
 }
 
-.pnlm-hotspot {
-    filter: drop-shadow(0 0 10px #00c6ff);
-}
-
-.pnlm-hotspot .pnlm-sprite {
-    animation: pulseGlow 1.5s infinite;
-}
 </style>
 </head>
 
@@ -239,25 +228,22 @@ animation:btnFlow 4s ease infinite;
 <div class="menu-icon">☰</div>
 
 <div class="menu">
-
 <div onclick="viewer.loadScene('gate')">Main Gateway</div>
 <div onclick="viewer.loadScene('bail')">Beil Entrance</div>
 <div onclick="viewer.loadScene('admin')">Admin Hall</div>
 <div onclick="viewer.loadScene('meetingroom')">Meeting Room</div>
-
 <div onclick="viewer.loadScene('cc')">Computer Centre</div>
 <div onclick="viewer.loadScene('projectlab')">Project Lab</div>
-<div onclick="viewer.loadScene('cloudlab')">Cloud Lab</div>
+<div onclick="viewer.loadScene('cloudlab')">Cloud Computing Lab</div>
 <div onclick="viewer.loadScene('iotlab')">IoT Lab</div>
 <div onclick="viewer.loadScene('networklab')">Network Lab</div>
 <div onclick="viewer.loadScene('dbmslab')">DBMS Lab</div>
 <div onclick="viewer.loadScene('oslab')">OS Lab</div>
 <div onclick="viewer.loadScene('aimllab')">AIML Lab</div>
 <div onclick="viewer.loadScene('wtlab')">WT Lab</div>
-
 <div onclick="viewer.loadScene('classroom')">Classroom</div>
 
-</div>
+    
 </div>
 </div>
 
@@ -312,11 +298,11 @@ var viewer = pannellum.viewer('panorama',{
 "hotSpots": [
 
 {
-"pitch": 2,
-"yaw": 257,
+"pitch": -10,
+"yaw": 240,
 "type": "scene",
 "text": "Back to Main Gateway",
-"sceneId": "gate"
+"sceneId": "Gate"
 },
 
 {
@@ -332,40 +318,12 @@ var viewer = pannellum.viewer('panorama',{
 
 "admin": {
 "type": "equirectangular",
-"panorama": "admin.jpeg",
+"panorama": "admin.jpeg"
+},
 
-"hotSpots": [
-{
-    "pitch": -1,
-    "yaw": 143,
-    "type": "scene",
-    "text": "Go to Beil Entrance",
-    "sceneId": "bail"
-},
-    
-{
-    "pitch": 0,
-    "yaw": 10,
-    "type": "scene",
-    "text": "Go to Meeting Room",
-    "sceneId": "meetingroom"
-}
-]
-},
-    
 "meetingroom": {
 "type": "equirectangular",
-"panorama": "meetingroom1.jpg",
-
-"hotSpots": [
-{
-    "pitch": -1,
-    "yaw": 142,
-    "type": "scene",
-    "text": "Back to Admin Hall",
-    "sceneId": "admin"
-}
-]
+"panorama": "meetingroom1.jpg"
 },
 
 "cc": {
@@ -425,20 +383,22 @@ var viewer = pannellum.viewer('panorama',{
 // INTRO EXIT + ENABLE DEBUG AFTER START
 function startTour(){
 
-    let intro = document.getElementById("intro")
+let intro = document.getElementById("intro")
 
-    intro.style.opacity = "0"
+intro.style.opacity = "0"
 
-    setTimeout(function(){
-        intro.style.display = "none"
+setTimeout(function(){
+intro.style.display = "none"
 
-        viewer.on('mousedown', function(){
-            console.log("pitch:", viewer.getPitch(), "yaw:", viewer.getYaw());
-        });
+// enable debug AFTER intro
+viewer.on('mousedown', function(){
+console.log("pitch:", viewer.getPitch(), "yaw:", viewer.getYaw());
+});
 
-    },700)
+},700)
 
 }
+
 
 // TITLE ANIMATION (FIXED)
 viewer.on('scenechange', function(scene){
