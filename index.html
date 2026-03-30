@@ -220,6 +220,29 @@ animation:btnFlow 4s ease infinite;
 .pnlm-hotspot .pnlm-sprite {
     animation: pulseGlow 1.5s infinite;
 }
+
+/* popup should be OUTSIDE */
+.popup {
+    position: fixed;
+    bottom: 20px;
+    right: -320px;
+
+    background: rgba(0,0,0,0.85);
+    color: white;
+    padding: 12px 18px;
+    border-radius: 10px;
+    backdrop-filter: blur(8px);
+
+    box-shadow: 0 0 20px rgba(0,198,255,0.4);
+    font-size: 14px;
+
+    transition: right 0.5s ease;
+    z-index: 999;
+}
+
+.popup.show {
+    right: 20px;
+}
 </style>
 </head>
 
@@ -455,8 +478,24 @@ function startTour(){
     },700)
 
 }
-
+    
+let ccPopupShown = false;
 viewer.on('scenechange', function(scene){
+
+if(scene === "cc" && !ccPopupShown){
+
+    let popup = document.getElementById("popup");
+
+    setTimeout(() => {
+        popup.classList.add("show");
+    }, 500);
+
+    setTimeout(() => {
+        popup.classList.remove("show");
+    }, 6000);
+
+    ccPopupShown = true;
+}
 
 let title = document.getElementById("sceneTitle")
 
@@ -535,6 +574,8 @@ console.log("pitch:", viewer.getPitch(), "yaw:", viewer.getYaw());
 });
 
 </script>
-
+<div id="popup" class="popup">
+  📍 Use menu to explore other labs
+</div>
 </body>
 </html>
