@@ -104,7 +104,7 @@ z-index:10;
 background:rgba(0,0,0,0.65);
 border-radius:8px;
 box-shadow:0 4px 15px rgba(0,0,0,0.3);
-overflow:hidden;
+overflow:visible;
 backdrop-filter:blur(8px);
 }
 
@@ -133,6 +133,39 @@ background:rgba(255,255,255,0.1);
 
 .menu-container:hover .menu{
 max-height:200px;
+}
+
+/* parent */
+.submenu-parent {
+    position: relative;
+    color: white;
+    padding: 10px 16px;
+    cursor: pointer;
+}
+
+/* hidden submenu */
+.submenu {
+    position: absolute;
+    top: 0;
+    left: 100%;
+    background: rgba(0,0,0,0.9);
+    border-radius: 6px;
+    min-width: 180px;
+    display: none;
+}
+
+/* submenu items */
+.submenu div {
+    padding: 10px;
+    white-space: nowrap;
+}
+
+.submenu div:hover {
+    background: rgba(255,255,255,0.1);
+}
+
+.submenu {
+    transition: 0.2s ease;
 }
 
 /* TITLE */
@@ -233,22 +266,29 @@ animation:btnFlow 4s ease infinite;
 <div class="menu-icon">☰</div>
 
 <div class="menu">
+
 <div onclick="viewer.loadScene('gate')">Main Gateway</div>
 <div onclick="viewer.loadScene('bail')">Beil Entrance</div>
 <div onclick="viewer.loadScene('admin')">Admin Hall</div>
 <div onclick="viewer.loadScene('meetingroom')">Meeting Room</div>
-<div onclick="viewer.loadScene('cc')">Computer Centre</div>
-<div onclick="viewer.loadScene('projectlab')">Project Lab</div>
-<div onclick="viewer.loadScene('cloudlab')">Cloud Computing Lab</div>
-<div onclick="viewer.loadScene('iotlab')">IoT Lab</div>
-<div onclick="viewer.loadScene('networklab')">Network Lab</div>
-<div onclick="viewer.loadScene('dbmslab')">DBMS Lab</div>
-<div onclick="viewer.loadScene('oslab')">OS Lab</div>
-<div onclick="viewer.loadScene('aimllab')">AIML Lab</div>
-<div onclick="viewer.loadScene('wtlab')">WT Lab</div>
-<div onclick="viewer.loadScene('classroom')">Classroom</div>
 
+<!-- LABS DROPDOWN -->
+<div class="submenu-parent" onclick="toggleSubmenu(event)">
+    Labs ▶
     
+<div class="submenu">
+    <div onclick="event.stopPropagation(); viewer.loadScene('cc')">Computer Centre</div>
+    <div onclick="event.stopPropagation(); viewer.loadScene('projectlab')">Project Lab</div>
+    <div onclick="event.stopPropagation(); viewer.loadScene('cloudlab')">Cloud Lab</div>
+    <div onclick="event.stopPropagation(); viewer.loadScene('iotlab')">IoT Lab</div>
+    <div onclick="event.stopPropagation(); viewer.loadScene('networklab')">Network Lab</div>
+    <div onclick="event.stopPropagation(); viewer.loadScene('dbmslab')">DBMS Lab</div>
+    <div onclick="event.stopPropagation(); viewer.loadScene('oslab')">OS Lab</div>
+    <div onclick="event.stopPropagation(); viewer.loadScene('aimllab')">AIML Lab</div>
+    <div onclick="event.stopPropagation(); viewer.loadScene('wtlab')">WT Lab</div>
+</div>
+</div>
+<div onclick="viewer.loadScene('classroom')">Classroom</div>
 </div>
 </div>
 
@@ -263,8 +303,6 @@ animation:btnFlow 4s ease infinite;
 <button onclick="viewer.setHfov(viewer.getHfov() - 10)">+</button>
 <button onclick="viewer.setHfov(viewer.getHfov() + 10)">-</button>
 <button onclick="viewer.toggleFullscreen()">⛶</button>
-
-<button id="vrBtn" onclick="enableGyro()">VR</button>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/pannellum/build/pannellum.js"></script>
@@ -415,81 +453,6 @@ var viewer = pannellum.viewer('panorama',{
 
 });
 
-let targetYaw = 0;
-let targetPitch = 0;
-let gyroActive = false;
-
-
-// START GYRO
-function startGyro(){
-    window.addEventListener('deviceorientation', handleOrientation);
-    requestAnimationFrame(smoothMove);
-}
-
-
-// ENABLE / DISABLE
-function enableGyro(){
-
-    gyroActive = !gyroActive;
-
-    let btn = document.getElementById("vrBtn");
-
-    if(gyroActive){
-
-        if (typeof DeviceOrientationEvent.requestPermission === 'function') {
-
-            DeviceOrientationEvent.requestPermission()
-            .then(response => {
-                if (response === 'granted') {
-                    startGyro();
-                }
-            })
-            .catch(console.error);
-
-        } else {
-            startGyro();
-        }
-
-        if(btn) btn.innerText = "VR";
-
-    } else {
-
-        window.removeEventListener('deviceorientation', handleOrientation);
-
-        if(btn) btn.innerText = "VR";
-    }
-}
-
-
-// HANDLE SENSOR
-function handleOrientation(event){
-
-    if(event.alpha !== null && event.beta !== null){
-        targetYaw = event.alpha;
-        targetPitch = event.beta;
-    }
-
-}
-
-
-// SMOOTH MOVEMENT
-function smoothMove(){
-
-    if(!gyroActive) return;
-
-    let currentYaw = viewer.getYaw();
-    let currentPitch = viewer.getPitch();
-
-    let newYaw = currentYaw + (targetYaw - currentYaw) * 0.08;
-    let newPitch = currentPitch + (targetPitch - currentPitch) * 0.08;
-
-    viewer.setYaw(newYaw);
-    viewer.setPitch(newPitch);
-
-    requestAnimationFrame(smoothMove);
-}
-
-
 // INTRO EXIT + ENABLE DEBUG AFTER START
 function startTour(){
 
@@ -506,6 +469,18 @@ function startTour(){
 
     },700)
 
+}
+
+function toggleSubmenu(event){
+    event.stopPropagation(); // prevents menu closing
+
+    let submenu = event.currentTarget.querySelector('.submenu');
+
+    if(submenu.style.display === "block"){
+        submenu.style.display = "none";
+    } else {
+        submenu.style.display = "block";
+    }
 }
 
 
