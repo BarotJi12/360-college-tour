@@ -323,7 +323,18 @@ var viewer = pannellum.viewer('panorama',{
 "type": "scene",
 "text": "Go to Admin Hall",
 "sceneId": "admin"
+},
+
+{
+"pitch": -5,
+"yaw": 15,
+"type": "scene",
+"text": "Go to Computer Centre",
+"sceneId": "cc"
 }
+
+]
+},
 
 ]
 },
@@ -368,7 +379,19 @@ var viewer = pannellum.viewer('panorama',{
 
 "cc": {
 "type": "equirectangular",
-"panorama": "cc.jpeg"
+"panorama": "cc.jpeg",
+
+"hotSpots": [
+
+{
+    "pitch": 0,
+    "yaw": 180,
+    "type": "scene",
+    "text": "Back to Beil Entrance",
+    "sceneId": "bail"
+}
+
+]
 },
 
 "projectlab": {
