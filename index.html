@@ -135,36 +135,11 @@ background:rgba(255,255,255,0.1);
 max-height:200px;
 }
 
-/* parent */
-.submenu-parent {
-    position: relative;
-    color: white;
-    padding: 10px 16px;
-    cursor: pointer;
+.menu {
+    max-height: 250px;
+    overflow-y: auto;
 }
 
-/* hidden submenu */
-.submenu {
-    position: static; 
-    display: none;
-    background: rgba(0,0,0,0.7);
-    border-radius: 6px;
-    margin-left: 10px;
-}
-
-/* submenu items */
-.submenu div {
-    padding: 20px;
-    white-space: nowrap;
-}
-
-.submenu div:hover {
-    background: rgba(255,255,255,0.1);
-}
-
-.submenu {
-    transition: 0.2s ease;
-}
 
 /* TITLE */
 
@@ -270,23 +245,19 @@ animation:btnFlow 4s ease infinite;
 <div onclick="viewer.loadScene('admin')">Admin Hall</div>
 <div onclick="viewer.loadScene('meetingroom')">Meeting Room</div>
 
-<!-- LABS DROPDOWN -->
-<div class="submenu-parent" onclick="toggleSubmenu(event)">
-    Labs ▶
-    
-<div class="submenu">
-    <div onclick="event.stopPropagation(); viewer.loadScene('cc')">Computer Centre</div>
-    <div onclick="event.stopPropagation(); viewer.loadScene('projectlab')">Project Lab</div>
-    <div onclick="event.stopPropagation(); viewer.loadScene('cloudlab')">Cloud Lab</div>
-    <div onclick="event.stopPropagation(); viewer.loadScene('iotlab')">IoT Lab</div>
-    <div onclick="event.stopPropagation(); viewer.loadScene('networklab')">Network Lab</div>
-    <div onclick="event.stopPropagation(); viewer.loadScene('dbmslab')">DBMS Lab</div>
-    <div onclick="event.stopPropagation(); viewer.loadScene('oslab')">OS Lab</div>
-    <div onclick="event.stopPropagation(); viewer.loadScene('aimllab')">AIML Lab</div>
-    <div onclick="event.stopPropagation(); viewer.loadScene('wtlab')">WT Lab</div>
-</div>
-</div>
+<div onclick="viewer.loadScene('cc')">Computer Centre</div>
+<div onclick="viewer.loadScene('projectlab')">Project Lab</div>
+<div onclick="viewer.loadScene('cloudlab')">Cloud Lab</div>
+<div onclick="viewer.loadScene('iotlab')">IoT Lab</div>
+<div onclick="viewer.loadScene('networklab')">Network Lab</div>
+<div onclick="viewer.loadScene('dbmslab')">DBMS Lab</div>
+<div onclick="viewer.loadScene('oslab')">OS Lab</div>
+<div onclick="viewer.loadScene('aimllab')">AIML Lab</div>
+<div onclick="viewer.loadScene('wtlab')">WT Lab</div>
+
 <div onclick="viewer.loadScene('classroom')">Classroom</div>
+
+</div>
 </div>
 </div>
 
@@ -468,19 +439,6 @@ function startTour(){
     },700)
 
 }
-
-function toggleSubmenu(event){
-    event.stopPropagation(); // prevents menu closing
-
-    let submenu = event.currentTarget.querySelector('.submenu');
-
-    if(submenu.style.display === "block"){
-        submenu.style.display = "none";
-    } else {
-        submenu.style.display = "block";
-    }
-}
-
 
 // TITLE ANIMATION (FIXED)
 viewer.on('scenechange', function(scene){
