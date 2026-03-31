@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>College Virtual Tour</title>
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum/build/pannellum.css"/>
@@ -246,6 +247,50 @@ animation:btnFlow 4s ease infinite;
 #panorama {
     position: relative;
 }
+
+@media (max-width: 768px) {
+
+    /* Viewer full fit */
+    #panorama {
+        height: 100vh;
+        width: 100vw;
+    }
+
+    /* MENU smaller */
+    .menu-icon {
+        font-size: 22px;
+        padding: 8px 12px;
+    }
+
+    .menu {
+        width: 160px !important;
+    }
+
+    .menu div {
+        font-size: 14px;
+        padding: 8px 12px;
+    }
+
+    /* TITLE smaller */
+    .scene-title {
+        font-size: 14px;
+        padding: 4px 8px;
+    }
+
+    /* CONTROLS smaller */
+    .controls button {
+        width: 32px;
+        height: 32px;
+        font-size: 14px;
+    }
+
+    /* POPUP adjust */
+    .popup {
+        font-size: 13px;
+        bottom: 15px;
+    }
+
+}
 </style>
 </head>
 
@@ -314,7 +359,8 @@ var viewer = pannellum.viewer('panorama',{
     "autoRotate": -2,
     "autoRotateInactivityDelay": 3000,
     "showControls": false,
-    "showSceneTitle": false
+    "showSceneTitle": false,
+    "hfov": 110 
 },
 
 "scenes": {
