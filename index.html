@@ -262,10 +262,6 @@ animation:btnFlow 4s ease infinite;
         padding: 8px 12px;
     }
 
-    .menu {
-        width: 160px !important;
-    }
-
     .menu div {
         font-size: 14px;
         padding: 8px 12px;
@@ -306,6 +302,12 @@ animation:btnFlow 4s ease infinite;
         max-height: 0;
         opacity: 0;
     }
+}
+
+.menu.open {
+    max-height: 250px;
+    width: 160px;
+    opacity: 1;
 }
 </style>
 </head>
@@ -652,17 +654,12 @@ document.querySelector(".menu-icon").addEventListener("click", function(){
     let menu = document.querySelector(".menu");
 
     if(menuOpen){
-        menu.style.maxHeight = "0";
-        menu.style.width = "0";
-        menu.style.opacity = "0";
+        menu.classList.remove("open");
         menuOpen = false;
     } else {
-        menu.style.maxHeight = "250px";
-       menu.style.width = "160px"; 
-        menu.style.opacity = "1";
+        menu.classList.add("open");
         menuOpen = true;
     }
-
 });
 
 </script>
