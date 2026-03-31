@@ -243,6 +243,16 @@ animation:btnFlow 4s ease infinite;
 .popup.show {
     right: 20px;
 }
+
+#panorama {
+    position: relative;
+}
+
+.popup {
+    position: absolute; /* change from fixed */
+    bottom: 20px;
+    right: -320px;
+}
 </style>
 </head>
 
@@ -574,8 +584,10 @@ console.log("pitch:", viewer.getPitch(), "yaw:", viewer.getYaw());
 });
 
 </script>
-<div id="popup" class="popup">
-  📍 Use menu to explore other labs
+<div id="panorama">
+    <div id="popup" class="popup">
+        📍 Use menu to explore other labs
+    </div>
 </div>
 </body>
 </html>
