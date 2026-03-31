@@ -237,7 +237,7 @@ animation:btnFlow 4s ease infinite;
     font-size: 14px;
 
     transition: left 0.4s ease;
-    z-index: 999;
+    z-index: 9999;
 }
 
 .popup.show {
@@ -290,6 +290,22 @@ animation:btnFlow 4s ease infinite;
         bottom: 15px;
     }
 
+}
+
+@media (max-width: 768px) {
+    .menu-container:hover .menu {
+        max-height: 0;
+        width: 0;
+        opacity: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .menu {
+        width: 0;
+        max-height: 0;
+        opacity: 0;
+    }
 }
 </style>
 </head>
@@ -539,13 +555,15 @@ if(scene === "cc" && !ccPopupShown){
 
     let popup = document.getElementById("popup");
 
+    popup.style.display = "block"; 
+
     setTimeout(() => {
         popup.classList.add("show");
     }, 500);
 
     setTimeout(() => {
         popup.classList.remove("show");
-    }, 6000);
+    }, 7000);
 
     ccPopupShown = true;
 }
@@ -624,6 +642,27 @@ title.classList.add("title-in")
 
 viewer.on('mousedown', function(){
 console.log("pitch:", viewer.getPitch(), "yaw:", viewer.getYaw());
+});
+
+// MOBILE MENU TOGGLE
+let menuOpen = false;
+
+document.querySelector(".menu-icon").addEventListener("click", function(){
+
+    let menu = document.querySelector(".menu");
+
+    if(menuOpen){
+        menu.style.maxHeight = "0";
+        menu.style.width = "0";
+        menu.style.opacity = "0";
+        menuOpen = false;
+    } else {
+        menu.style.maxHeight = "250px";
+       menu.style.width = "160px"; 
+        menu.style.opacity = "1";
+        menuOpen = true;
+    }
+
 });
 
 </script>
