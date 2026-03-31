@@ -247,12 +247,6 @@ animation:btnFlow 4s ease infinite;
 #panorama {
     position: relative;
 }
-
-.popup {
-    position: absolute; /* change from fixed */
-    bottom: 20px;
-    right: -320px;
-}
 </style>
 </head>
 
@@ -297,7 +291,11 @@ animation:btnFlow 4s ease infinite;
 
 <div class="scene-title" id="sceneTitle">Main Gateway</div>
 
-<div id="panorama"></div>
+<div id="panorama">
+    <div id="popup" class="popup">
+        📍 Use menu to explore other labs
+    </div>
+</div>
 
 <div class="controls">
 <button onclick="viewer.setHfov(viewer.getHfov() - 10)">+</button>
@@ -584,10 +582,5 @@ console.log("pitch:", viewer.getPitch(), "yaw:", viewer.getYaw());
 });
 
 </script>
-<div id="panorama">
-    <div id="popup" class="popup">
-        📍 Use menu to explore other labs
-    </div>
-</div>
 </body>
 </html>
