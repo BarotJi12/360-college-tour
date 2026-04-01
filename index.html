@@ -347,6 +347,7 @@ animation:btnFlow 4s ease infinite;
 
 <div onclick="viewer.loadScene('classroom')">Classroom</div>
 
+<div onclick="viewer.loadScene('hostelfloor')">Hostel Floor</div>
 </div>
 </div>
 </div>
@@ -527,6 +528,11 @@ var viewer = pannellum.viewer('panorama',{
 "classroom": {
 "type": "equirectangular",
 "panorama": "classroom.jpeg"
+},
+
+"hostelfloor": {
+"type": "equirectangular",
+"panorama": "hostelfloor.jpeg"
 }
 
 }
@@ -633,6 +639,10 @@ title.innerText = "WT Lab"
 
 if(scene === "classroom"){
 title.innerText = "Classroom"
+}
+
+if(scene === "hostelfloor"){
+title.innerText = "Hostel Floor"
 }
 
 title.classList.remove("title-out")
