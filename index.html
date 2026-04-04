@@ -348,7 +348,8 @@ animation:btnFlow 4s ease infinite;
 <div onclick="viewer.loadScene('seminarhall')">Seminar Hall</div>
 
 <div onclick="viewer.loadScene('classroom')">Classroom</div>
-
+    
+<div onclick="viewer.loadScene('hostelground')">Hostel Ground</div>
 <div onclick="viewer.loadScene('hostelfloor')">Hostel Floor</div>
 </div>
 </div>
@@ -449,7 +450,7 @@ var viewer = pannellum.viewer('panorama',{
     "pitch": 0,
     "yaw": 10,
     "type": "scene",
-    "text": "Go to Meeting Room",
+    "text": "Go to Board Room",
     "sceneId": "meetingroom"
 }
 ]
@@ -535,6 +536,11 @@ var viewer = pannellum.viewer('panorama',{
 "classroom": {
 "type": "equirectangular",
 "panorama": "classroom.jpeg"
+},
+
+"hostelground": {
+"type": "equirectangular",
+"panorama": "hostelground.jpeg"
 },
 
 "hostelfloor": {
@@ -650,6 +656,10 @@ title.innerText = "Seminar Hall"
 
 if(scene === "classroom"){
 title.innerText = "Classroom"
+}
+    
+if(scene === "hostelground"){
+title.innerText = "Hostel Ground"
 }
 
 if(scene === "hostelfloor"){
