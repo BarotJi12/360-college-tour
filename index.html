@@ -309,6 +309,47 @@ animation:btnFlow 4s ease infinite;
     width: 160px;
     opacity: 1;
 }
+
+.info-toggle {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    
+    background: rgba(0,0,0,0.7);
+    color: white;
+    padding: 10px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    
+    z-index: 20;
+}
+
+/* PANEL */
+.info-panel {
+    position: absolute;
+    left: -260px;
+    top: 50%;
+    transform: translateY(-50%);
+    
+    width: 240px;
+    padding: 16px;
+    
+    background: rgba(0,0,0,0.85);
+    color: white;
+    border-radius: 12px;
+    
+    backdrop-filter: blur(8px);
+    box-shadow: 0 0 20px rgba(0,198,255,0.4);
+    
+    transition: left 0.4s ease;
+    z-index: 20;
+}
+
+/* SHOW */
+.info-panel.open {
+    left: 60px;
+}
 </style>
 </head>
 
@@ -363,6 +404,13 @@ animation:btnFlow 4s ease infinite;
     </div>
 </div>
 
+<div id="infoToggle" class="info-toggle">ℹ️</div>
+
+<div id="infoPanel" class="info-panel">
+    <h3 id="infoTitle">Info</h3>
+    <p id="infoText"></p>
+</div>
+
 <div class="controls">
 <button onclick="viewer.setHfov(viewer.getHfov() - 10)">+</button>
 <button onclick="viewer.setHfov(viewer.getHfov() + 10)">-</button>
@@ -372,7 +420,41 @@ animation:btnFlow 4s ease infinite;
 <script src="https://cdn.jsdelivr.net/npm/pannellum/build/pannellum.js"></script>
 
 <script>
+    
+let sceneDetails = {
 
+    seminarhall: {
+        title: "Seminar Hall",
+        points: [
+            "Expert lectures and guest sessions conducted",
+            "Virtual industrial visits (IVs) organized",
+            "Mini programs and presentations held",
+            "Interactive learning environment for students"
+        ]
+    },
+
+    cc: {
+        title: "Computer Centre",
+        points: [
+            "Equipped with multiple computer systems",
+            "Used for practical sessions and coding work",
+            "Supports programming and software labs",
+            "Provides hands-on technical learning"
+        ]
+    },
+
+    meetingroom: {
+        title: "Board Room",
+        points: [
+            "Used for official meetings and discussions",
+            "Project presentations and reviews conducted",
+            "Decision-making and planning sessions",
+            "Professional and formal environment"
+        ]
+    }
+
+};
+    
 var viewer = pannellum.viewer('panorama',{
 "default": {
     "firstScene": "gate",
@@ -576,7 +658,7 @@ function startTour(){
     },700)
 
 }
-    
+
 let ccPopupShown = false;
 viewer.on('scenechange', function(scene){
 
@@ -598,6 +680,31 @@ if(scene === "cc" && !ccPopupShown){
 }
 
 let title = document.getElementById("sceneTitle")
+
+let toggle = document.getElementById("infoToggle");
+let titleBox = document.getElementById("infoTitle");
+let textBox = document.getElementById("infoText");
+let panel = document.getElementById("infoPanel");
+
+if(sceneDetails[scene]){
+
+    toggle.style.display = "block";
+
+    titleBox.innerText = sceneDetails[scene].title;
+
+    let html = "<ul>";
+    sceneDetails[scene].points.forEach(function(p){
+        html += "<li>" + p + "</li>";
+    });
+    html += "</ul>";
+
+    textBox.innerHTML = html;
+
+} else {
+
+    toggle.style.display = "none";
+    panel.classList.remove("open");
+}
 
 title.classList.remove("title-in","title-out")
 void title.offsetWidth
@@ -686,6 +793,7 @@ console.log("pitch:", viewer.getPitch(), "yaw:", viewer.getYaw());
 });
 
 // MOBILE MENU TOGGLE
+// MOBILE MENU TOGGLE
 let menuOpen = false;
 
 document.querySelector(".menu-icon").addEventListener("click", function(){
@@ -699,8 +807,28 @@ document.querySelector(".menu-icon").addEventListener("click", function(){
         menu.classList.add("open");
         menuOpen = true;
     }
+
 });
 
+
+// =====================
+// INFO TOGGLE (SEPARATE)
+// =====================
+let infoOpen = false;
+
+document.getElementById("infoToggle").addEventListener("click", function(){
+
+    let panel = document.getElementById("infoPanel");
+
+    if(infoOpen){
+        panel.classList.remove("open");
+        infoOpen = false;
+    } else {
+        panel.classList.add("open");
+        infoOpen = true;
+    }
+
+});
 </script>
 </body>
 </html>
