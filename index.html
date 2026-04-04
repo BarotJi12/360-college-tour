@@ -333,7 +333,7 @@ animation:btnFlow 4s ease infinite;
 <div onclick="viewer.loadScene('gate')">Main Gateway</div>
 <div onclick="viewer.loadScene('bail')">Beil Entrance</div>
 <div onclick="viewer.loadScene('admin')">Admin Hall</div>
-<div onclick="viewer.loadScene('meetingroom')">Meeting Room</div>
+<div onclick="viewer.loadScene('meetingroom')">Board Room</div>
 
 <div onclick="viewer.loadScene('cc')">Computer Centre</div>
 <div onclick="viewer.loadScene('projectlab')">Project Lab</div>
@@ -344,6 +344,8 @@ animation:btnFlow 4s ease infinite;
 <div onclick="viewer.loadScene('oslab')">OS Lab</div>
 <div onclick="viewer.loadScene('aimllab')">AIML Lab</div>
 <div onclick="viewer.loadScene('wtlab')">WT Lab</div>
+    
+<div onclick="viewer.loadScene('seminarhall')">Seminar Hall</div>
 
 <div onclick="viewer.loadScene('classroom')">Classroom</div>
 
@@ -455,7 +457,7 @@ var viewer = pannellum.viewer('panorama',{
     
 "meetingroom": {
 "type": "equirectangular",
-"panorama": "meetingroom1.jpg",
+"panorama": "meetingroom.jpeg",
 
 "hotSpots": [
 {
@@ -523,6 +525,11 @@ var viewer = pannellum.viewer('panorama',{
 "wtlab": {
 "type": "equirectangular",
 "panorama": "wtlab.jpeg"
+},
+
+"seminarhall": {
+"type": "equirectangular",
+"panorama": "seminarhall.jpeg"
 },
 
 "classroom": {
@@ -598,7 +605,7 @@ title.innerText = "Admin Hall"
 }
     
 if(scene === "meetingroom"){
-title.innerText = "Meeting Room"
+title.innerText = "Board Room"
 }
 
 if(scene === "cc"){
@@ -635,6 +642,10 @@ title.innerText = "AIML Lab"
 
 if(scene === "wtlab"){
 title.innerText = "WT Lab"
+}
+
+if(scene === "seminarhall"){
+title.innerText = "Seminar Hall"
 }
 
 if(scene === "classroom"){
