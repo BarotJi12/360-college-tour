@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,7 +7,6 @@
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum/build/pannellum.css"/>
 <link rel="preload" as="video" href="intro.mp4">
-<link rel="preload" as="image" href="upl.jpg">
 
 <style>
 
@@ -64,56 +64,20 @@ height:100vh;
 }
 
 /* TEXT CONTENT */
-.enter-btn{
-  padding:12px 30px;
-  border:1px solid rgba(255,255,255,0.4);
-  border-radius:30px;
-  background: transparent;
+.intro-content{
+  position:relative;
+  z-index:2;
+  text-align:center;
   color:white;
-  cursor:pointer;
-  transition:0.3s;
-}
-
-.enter-btn:hover{
-  background: rgba(255,255,255,0.15);
-  transform: scale(1.05);
+  animation:introFade 1s ease;
 }
 
 @keyframes videoFade{
   to{opacity:1;}
 }
 
-@media (max-width: 768px){
-
-  #introVideo{
-    display:none;
-  }
-
-  #introImage{
-    display:block;
-    position:absolute;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-
-    background:url("upl.jpg") center/cover no-repeat;
-
-    filter: blur(2px) brightness(0.8);
-    animation:bgZoom 10s ease-in-out infinite alternate;
-
-    z-index:0;
-  }
-
-}
-
-@keyframes bgZoom{
-  from{ transform: scale(1); }
-  to{ transform: scale(1.05); }
-}
-
 .enter-btn{
-padding:14px 35px;
+padding:14px 36px;
 border:none;
 border-radius:30px;
 background:linear-gradient(135deg,#00c6ff,#0072ff);
@@ -250,26 +214,11 @@ animation:btnFlow 4s ease infinite;
 }
 
 .pnlm-hotspot {
-  filter: drop-shadow(0 0 10px #00c6ff);
+    filter: drop-shadow(0 0 10px #00c6ff);
 }
 
 .pnlm-hotspot .pnlm-sprite {
-  animation: pulseGlow 1.5s infinite;
-}
-
-@keyframes pulseGlow{
-  0%{
-    transform: scale(1);
-    filter: brightness(1);
-  }
-  50%{
-    transform: scale(1.2);
-    filter: brightness(1.8);
-  }
-  100%{
-    transform: scale(1);
-    filter: brightness(1);
-  }
+    animation: pulseGlow 1.5s infinite;
 }
 
 .popup {
@@ -409,23 +358,15 @@ animation:btnFlow 4s ease infinite;
 <body>
 
 <div id="intro">
-
-  <!-- VIDEO (desktop) -->
-  <video autoplay muted loop playsinline id="introVideo">
+   <video autoplay muted loop playsinline id="introVideo">
     <source src="intro.mp4" type="video/mp4">
   </video>
-
-  <!-- IMAGE (mobile fallback) -->
-  <div id="introImage"></div>
-
   <div class="intro-overlay"></div>
-
   <div class="intro-content">
     <h1>UPL University of Sustainable Technology</h1>
     <p>Interactive 360° Virtual Tour</p>
     <button class="enter-btn" onclick="startTour()">Enter Tour</button>
   </div>
-
 </div>
 
 <div class="menu-container">
