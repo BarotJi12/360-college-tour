@@ -5,7 +5,7 @@
 <title>College Virtual Tour</title>
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum/build/pannellum.css"/>
-<link rel="preload" as="image" href="upl.jpg">
+<link rel="preload" as="video" href="intro.mp4">
 
 <style>
 
@@ -26,55 +26,53 @@ height:100vh;
 }
 
 #intro{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:#2f3e46;
-background-image:url("upl.jpg");
-background-size:cover;
-background-position:center;
-display:flex;
-align-items:center;
-justify-content:center;
-z-index:1000;
-transition:opacity 0.7s ease;
-animation:bgZoom 10s ease-in-out infinite alternate;
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:black;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:1000;
+  transition:opacity 0.7s ease;
 }
 
-@keyframes bgZoom{
-from{transform:scale(1)}
-to{transform:scale(1.05)}
+/* VIDEO */
+#introVideo{
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  filter: blur(2px) brightness(0.8);
+  z-index:0;
+  opacity:0;
+  animation:videoFade 1s ease forwards; 
 }
 
+/* OVERLAY */
 .intro-overlay{
-position:absolute;
-width:100%;
-height:100%;
-background:linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.75));
+  position:absolute;
+  width:100%;
+  height:100%;
+  background:linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.75));
+  z-index:1;
 }
 
+/* TEXT CONTENT */
 .intro-content{
-position:relative;
-text-align:center;
-color:white;
-animation:introFade 1s ease;
+  position:relative;
+  z-index:2;
+  text-align:center;
+  color:white;
+  animation:introFade 1s ease;
 }
 
-@keyframes introFade{
-from{opacity:0; transform:translateY(30px);}
-to{opacity:1; transform:translateY(0);}
-}
-
-.intro-content h1{
-font-size:42px;
-margin-bottom:10px;
-}
-
-.intro-content p{
-opacity:0.8;
-margin-bottom:30px;
+@keyframes videoFade{
+  to{opacity:1;}
 }
 
 .enter-btn{
@@ -359,15 +357,16 @@ animation:btnFlow 4s ease infinite;
 <body>
 
 <div id="intro">
-<div class="intro-overlay"></div>
-
-<div class="intro-content">
-<h1>UPL University of Sustainable Technology</h1>
-<p>Interactive 360° Virtual Tour</p>
-<button class="enter-btn" onclick="startTour()">Enter Tour</button>
+  <video autoplay muted loop playsinline id="introVideo">
+    <source src="intro.mp4" type="video/mp4">
+  </video>
+  <div class="intro-overlay"></div>
+  <div class="intro-content">
+    <h1>UPL University of Sustainable Technology</h1>
+    <p>Interactive 360° Virtual Tour</p>
+    <button class="enter-btn" onclick="startTour()">Enter Tour</button>
+  </div>
 </div>
-</div>
-
 
 <div class="menu-container">
 <div class="menu-icon">☰</div>
@@ -814,10 +813,6 @@ document.querySelector(".menu-icon").addEventListener("click", function(){
 
 });
 
-
-// =====================
-// INFO TOGGLE (SEPARATE)
-// =====================
 let infoOpen = false;
 
 document.getElementById("infoToggle").addEventListener("click", function(){
