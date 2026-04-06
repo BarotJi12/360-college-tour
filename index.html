@@ -64,19 +64,19 @@ height:100vh;
 }
 
 /* TEXT CONTENT */
-.intro-content{
-  position:relative;
-  z-index:2;
-  text-align:center;
+.enter-btn{
+  padding:12px 30px;
+  border:1px solid rgba(255,255,255,0.4);
+  border-radius:30px;
+  background: transparent;
   color:white;
-  animation:introFade 1s ease;
+  cursor:pointer;
+  transition:0.3s;
+}
 
-  background: rgba(0,0,0,0.4);
-  padding: 30px 40px;
-  border-radius: 16px;
-  backdrop-filter: blur(8px);
-
-  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+.enter-btn:hover{
+  background: rgba(255,255,255,0.15);
+  transform: scale(1.05);
 }
 
 @keyframes videoFade{
