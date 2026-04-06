@@ -6,6 +6,7 @@
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum/build/pannellum.css"/>
 <link rel="preload" as="video" href="intro.mp4">
+<link rel="preload" as="image" href="upl.jpg">
 
 <style>
 
@@ -73,6 +74,30 @@ height:100vh;
 
 @keyframes videoFade{
   to{opacity:1;}
+}
+
+@media (max-width: 768px){
+
+  #introVideo{
+    display:none;
+  }
+
+  #introImage{
+    display:block;
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+
+    background:url("upl.jpg") center/cover no-repeat;
+
+    filter: blur(2px) brightness(0.8);
+    animation:bgZoom 10s ease-in-out infinite alternate;
+
+    z-index:0;
+  }
+
 }
 
 .enter-btn{
@@ -357,15 +382,23 @@ animation:btnFlow 4s ease infinite;
 <body>
 
 <div id="intro">
-   <video autoplay muted loop playsinline id="introVideo">
+
+  <!-- VIDEO (desktop) -->
+  <video autoplay muted loop playsinline id="introVideo">
     <source src="intro.mp4" type="video/mp4">
   </video>
+
+  <!-- IMAGE (mobile fallback) -->
+  <div id="introImage"></div>
+
   <div class="intro-overlay"></div>
+
   <div class="intro-content">
     <h1>UPL University of Sustainable Technology</h1>
     <p>Interactive 360° Virtual Tour</p>
     <button class="enter-btn" onclick="startTour()">Enter Tour</button>
   </div>
+
 </div>
 
 <div class="menu-container">
