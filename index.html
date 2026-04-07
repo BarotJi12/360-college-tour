@@ -59,7 +59,6 @@ animation:videoFade 1s ease forwards;
 to{opacity:1;}
 }
 
-/* OVERLAY */
 .intro-overlay{
 position:absolute;
 width:100%;
@@ -68,7 +67,6 @@ background:linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.4));
 z-index:1;
 }
 
-/* TEXT */
 .intro-content{
 position:relative;
 z-index:2;
@@ -811,15 +809,19 @@ document.querySelector(".menu-icon").addEventListener("click", function(){
 
 let infoOpen = false;
 
-document.getElementById("infoToggle").addEventListener("click", function(){
+let toggleBtn = document.getElementById("infoToggle");
+
+toggleBtn.addEventListener("click", function(){
 
     let panel = document.getElementById("infoPanel");
 
     if(infoOpen){
         panel.classList.remove("open");
+        toggleBtn.innerText = ">"; 
         infoOpen = false;
     } else {
         panel.classList.add("open");
+        toggleBtn.innerText = "<";  
         infoOpen = true;
     }
 
