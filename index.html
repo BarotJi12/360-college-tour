@@ -325,24 +325,27 @@ z-index:20;
     position:absolute;
     left:-260px;
     top:50%;
-    transform:translateY(-50%);
+    transform:translateY(-50%) scale(0.95); 
     width:240px;
-    max-height:200px; 
-    overflow-y:auto;    
     padding:16px;
     background:rgba(0,0,0,0.85);
     color:white;
     border-radius:12px;
     backdrop-filter:blur(8px);
-    box-shadow:0 0 20px rgba(255,255,255,0.2);
+    box-shadow:0 0 20px rgba(0,198,255,0.4);
 
-    transition:left 0.4s ease;
+    transition:all 0.35s ease;
+
     z-index:20;
+    opacity:0;
 }
-
+    
 .info-panel.open{
-left:60px;
+    left:60px;
+    transform:translateY(-50%) scale(1); 
+    opacity:1;
 }
+    
 </style>
 </head>
 
