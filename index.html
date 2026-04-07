@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,7 +9,7 @@
 
 <style>
 
-/* ================= BASE ================= */
+/* ====== BASE ========= */
 body{
 margin:0;
 font-family:Arial;
@@ -27,7 +26,7 @@ width:100%;
 height:100vh;
 }
 
-/* ================= INTRO ================= */
+/* ========= INTRO ========= */
 #intro{
 position:fixed;
 top:0;
@@ -90,7 +89,7 @@ opacity:0.85;
 margin-bottom:25px;
 }
 
-/* ================= BUTTON (MERGED CLEAN) ================= */
+/* ===== BUTTON (MERGED CLEAN) ====== */
 .enter-btn{
 padding:14px 36px;
 border:none;
@@ -115,7 +114,7 @@ box-shadow:0 14px 30px rgba(0,0,0,0.5);
 100%{background-position:0% 50%}
 }
 
-/* ================= MENU ================= */
+/* ======== MENU ======== */
 .menu-container{
 position:fixed;
 top:15px;
@@ -162,7 +161,7 @@ white-space:nowrap;
 background:rgba(255,255,255,0.1);
 }
 
-/* ================= TITLE ================= */
+/* ========= TITLE ========== */
 .scene-title{
 position:absolute;
 top:15px;
@@ -187,7 +186,7 @@ transform:translateX(0);
 opacity:1;
 }
 
-/* ================= CONTROLS ================= */
+/* ========= CONTROLS ========= */
 .controls{
 position:absolute;
 bottom:20px;
@@ -213,7 +212,7 @@ cursor:pointer;
 background:#2196f3;
 }
 
-/* ================= HOTSPOTS ================= */
+/* ======== HOTSPOTS ========= */
 .pnlm-hotspot{
 filter: drop-shadow(0 0 8px rgba(255,255,255,0.8));
 }
@@ -228,7 +227,7 @@ animation:pulseGlow 1.5s infinite;
 100%{transform:scale(1);}
 }
 
-/* ================= POPUP ================= */
+/* ========= POPUP ========== */
 .popup{
 position:absolute;
 bottom:20px;
@@ -252,7 +251,7 @@ left:20px;
 position:relative;
 }
 
-/* ================= MOBILE ================= */
+/* ========= MOBILE ========== */
 @media (max-width: 768px){
 
 #panorama{
@@ -300,14 +299,14 @@ opacity:0;
 
 }
 
-/* ================= MENU TOGGLE ================= */
+/* ===== MENU TOGGLE ====== */
 .menu.open{
 max-height:250px;
 width:160px;
 opacity:1;
 }
 
-/* ================= INFO PANEL ================= */
+/* ===== INFO PANEL ====== */
 .info-toggle{
 position:absolute;
 left:20px;
@@ -408,11 +407,12 @@ left:60px;
 <button onclick="viewer.setHfov(viewer.getHfov() + 10)">-</button>
 <button onclick="viewer.toggleFullscreen()">⛶</button>
 </div>
-
+   
 <script src="https://cdn.jsdelivr.net/npm/pannellum/build/pannellum.js"></script>
 
 <script>
-    
+
+//--- INFO PANEL---//   
 let sceneDetails = {
 
     seminarhall: {
@@ -446,7 +446,8 @@ let sceneDetails = {
     }
 
 };
-    
+   
+//------ALL SCENES----//  
 var viewer = pannellum.viewer('panorama',{
 "default": {
     "firstScene": "gate",
@@ -785,7 +786,6 @@ viewer.on('mousedown', function(){
 console.log("pitch:", viewer.getPitch(), "yaw:", viewer.getYaw());
 });
 
-// MOBILE MENU TOGGLE
 // MOBILE MENU TOGGLE
 let menuOpen = false;
 
