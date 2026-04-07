@@ -367,7 +367,7 @@ z-index:20;
 <div class="menu">
 
 <div onclick="viewer.loadScene('gate')">Main Gateway</div>
-<div onclick="viewer.loadScene('bail')">Beil Entrance</div>
+<div onclick="viewer.loadScene('beil')">Beil Entrance</div>
 <div onclick="viewer.loadScene('admin')">Admin Hall</div>
 <div onclick="viewer.loadScene('meetingroom')">Board Room</div>
 
@@ -475,14 +475,14 @@ var viewer = pannellum.viewer('panorama',{
 "yaw": 77,
 "type": "scene",
 "text": "Go to Beil Entrance",
-"sceneId": "bail"
+"sceneId": "beil"
 }
 ]
 },
 
-"bail": {
+"beil": {
 "type": "equirectangular",
-"panorama": "Bail.jpeg",
+"panorama": "beil.jpeg",
 
 "hotSpots": [
 
@@ -530,7 +530,7 @@ var viewer = pannellum.viewer('panorama',{
     "yaw": 143,
     "type": "scene",
     "text": "Go to Beil Entrance",
-    "sceneId": "bail"
+    "sceneId": "beil"
 },
     
 {
@@ -715,7 +715,7 @@ if(scene === "gate"){
 title.innerText = "Main Gateway"
 }
     
-if(scene === "bail"){
+if(scene === "beil"){
 title.innerText = "Beil Entrance"
 }
     
