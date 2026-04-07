@@ -245,16 +245,13 @@ z-index:9999;
 left:20px;
 }
 
-#panorama{
-position:relative;
-}
-
 /* ========= MOBILE ========== */
 @media (max-width: 768px){
 
 #panorama{
 height:100vh;
 width:100vw;
+position:relative;
 }
 
 .menu-icon{
@@ -648,10 +645,6 @@ function startTour(){
     setTimeout(function(){
         intro.style.display = "none"
 
-        viewer.on('mousedown', function(){
-            console.log("pitch:", viewer.getPitch(), "yaw:", viewer.getYaw());
-        });
-
     },700)
 
 }
@@ -784,10 +777,6 @@ title.classList.add("title-in")
 
 },400)
 
-});
-
-viewer.on('mousedown', function(){
-console.log("pitch:", viewer.getPitch(), "yaw:", viewer.getYaw());
 });
 
 // MOBILE MENU TOGGLE
