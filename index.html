@@ -814,6 +814,15 @@ toggleBtn.addEventListener("click", function(){
         infoOpen = true;
     }
 
+// keyboard shortcut for fullscreen
+document.addEventListener("keydown", function(e){
+
+    if(e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA") return;
+
+    if(e.key === "f" || e.key === "F"){
+        viewer.toggleFullscreen();
+    }
+
 });
 </script>
 </body>
